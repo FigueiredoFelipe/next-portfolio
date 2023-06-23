@@ -4,9 +4,9 @@ import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 import { TechStack } from "./TechStack";
 import Image from "next/image";
-import profimg from "../UI/img/profimg.jpg"
+import profimg from "../UI/img/profimg.jpg";
 
-export const Home = forwardRef<HTMLElement>((_, ref) => {
+const Home = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section
       className="font-Poppins text-gray-800 bg-gray-100 shadow-inner"
@@ -19,7 +19,7 @@ export const Home = forwardRef<HTMLElement>((_, ref) => {
               <Image
                 className="rounded-full border-gray-700 border-b-gray-500 border"
                 src={profimg}
-                alt="Felipe's picture"
+                alt="Felipe&apos;s picture"
               />
             </div>
             <div className="max-w-full order-2 md:order-1">
@@ -27,7 +27,7 @@ export const Home = forwardRef<HTMLElement>((_, ref) => {
                 Front-End React Developer
               </h1>
               <p className="max-w-lg text-sm md:text-base py-2">
-                Hi, I'm Felipe Figueiredo. A passionate Front-end React
+                Hi, I&apos;m Felipe Figueiredo. A passionate Front-end React
                 Developer based in Belo Horizonte, Brazil.
               </p>
               <div className="text-3xl flex space-x-2 py-2">
@@ -54,3 +54,7 @@ export const Home = forwardRef<HTMLElement>((_, ref) => {
     </section>
   );
 });
+
+Home.displayName = "Home";
+
+export default Home;

@@ -3,11 +3,11 @@
 import { useRef } from "react";
 
 import { Navbar } from "../components/MainHeader/Navbar";
-import { Home } from "../components/Home/Home";
+import Home from "../components/Home/Home";
 import { Footer } from "../components/Footer/Footer";
 import Contact from "../components/Contact/Contact";
-import { AboutMe } from "../components/AboutMe/AboutMe";
-import { Portfolio } from "../components/Portfolio/Portfolio";
+import AboutMe from "../components/AboutMe/AboutMe";
+import Portfolio from "../components/Portfolio/Portfolio";
 
 function App() {
   const homeRef = useRef<HTMLElement>(null);

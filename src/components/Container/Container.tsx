@@ -1,5 +1,5 @@
-import { AboutMe } from "../AboutMe/AboutMe";
-import { Portfolio } from "../Portfolio/Portfolio";
+import AboutMe from "../AboutMe/AboutMe";
+import Portfolio from "../Portfolio/Portfolio";
 
 export function Container() {
   return (

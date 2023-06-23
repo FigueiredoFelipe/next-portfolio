@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import ho1Image from "../UI/img/ho1-2-410px.png";
 import Image from "next/image";
 
-export const AboutMe = forwardRef<HTMLElement>((_, ref) => {
+const AboutMe = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section className="py-16" ref={ref}>
       <div className="container m-auto justify-center w-full">
@@ -39,3 +39,7 @@ export const AboutMe = forwardRef<HTMLElement>((_, ref) => {
     </section>
   );
 });
+
+AboutMe.displayName = "AboutMe";
+
+export default AboutMe;

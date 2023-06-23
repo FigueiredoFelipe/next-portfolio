@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { Projects } from "./Projects";
 
-export const Portfolio = forwardRef<HTMLElement>((_, ref) => {
+const Portfolio = forwardRef<HTMLElement>((_, ref) => {
   return (
     <section className="py-16 bg-gray-100" ref={ref}>
       <main className="container m-auto max-w-full w-full md:w-[1024px] flex flex-col px-4">
@@ -15,3 +15,7 @@ export const Portfolio = forwardRef<HTMLElement>((_, ref) => {
     </section>
   );
 });
+
+Portfolio.displayName = "Portfolio";
+
+export default Portfolio;
