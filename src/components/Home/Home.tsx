@@ -4,6 +4,7 @@ import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
 
 import { TechStack } from "./TechStack";
 import Image from "next/image";
+import profimg from "../UI/img/profimg.jpg"
 
 export const Home = forwardRef<HTMLElement>((_, ref) => {
   return (
@@ -17,11 +18,8 @@ export const Home = forwardRef<HTMLElement>((_, ref) => {
             <div className="flex order-2 justify-center items-center ">
               <Image
                 className="rounded-full border-gray-700 border-b-gray-500 border"
-                src="https://media.licdn.com/dms/image/D4D03AQEIVJnHZV2jJQ/profile-displayphoto-shrink_200_200/0/1683295089907?e=1691625600&v=beta&t=C3H4Kle9mZ7WKyX1gOFZ7iD9zOKf1h0NUW7gBPLm8YM"
+                src={profimg}
                 alt="Felipe's picture"
-                width={100}
-                height={100}
-                priority={false} // {false} | {true}
               />
             </div>
             <div className="max-w-full order-2 md:order-1">
