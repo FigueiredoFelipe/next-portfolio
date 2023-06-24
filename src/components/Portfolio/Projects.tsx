@@ -6,7 +6,7 @@ import agtvw610 from "../UI/img/agtvw610.png";
 
 export function Projects() {
   return (
-    <main className="max-w-full md:w-8/12 flex flex-col md:flex-row w-full py-4 items-center md:space-8/12">
+    <main className="max-w-full md:w-8/12 flex flex-col md:flex-row w-full py-4 items-center md:space-8/12 m-auto">
       <figure className="w-full">
         <Image
           className="rounded-lg w-full"
