@@ -1,0 +1,20 @@
+[
+  {
+    "imgSrc": "agtvw610",
+    "imgAlt": "Arena Gaming Tv web site",
+    "title": "ARENA GAMING TV",
+    "details": "Collaborated with Arena Gaming TV website, developed features like countdown timer, news section, store system, live stream list, archives, and social media links. Focused on PHP framework-based web development for Esports industry. Created a robust user interface and integrated Twitch.tv transmission queue system using PHP, HTML, CSS3, and JavaScript. Resulted in 29% income growth and first-page Google ranking. Involved in analysis, planning, deployment, testing, and ongoing support.",
+    "techs": "PHP, HTML, CSS",
+    "github": "",
+    "liveDemo": ""
+  },
+  {
+    "imgSrc": "advnegreiros",
+    "imgAlt": "Advocacia Negreiros",
+    "title": "ADVOCACIA NEGREIROS",
+    "details": "Developed a WordPress website with a fully integrated news system. The website is designed to be responsive, ensuring optimal viewing and user experience across various devices. Additionally, I have customized the CSS and JavaScript to enhance the visual appeal and functionality of the website. By leveraging my expertise in WordPress development, I have created a dynamic and engaging platform for sharing news and information. The result is a professionally designed website that seamlessly combines aesthetics with functionality, providing an exceptional user experience for visitors.",
+    "techs": "WORDPRESS, JAVASCRIPT",
+    "github": "",
+    "liveDemo": ""
+  }
+]

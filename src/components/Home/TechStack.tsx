@@ -1,6 +1,6 @@
 import { FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
 
-import { SiTailwindcss, SiJavascript } from "react-icons/si";
+import { SiTailwindcss, SiJavascript, SiTypescript } from "react-icons/si";
 
 import { TbBrandNextjs } from "react-icons/tb";
 
@@ -12,8 +12,9 @@ export function TechStack() {
         <FaHtml5 className="fill-red-500 cursor-pointer" />
         <FaCss3Alt className="fill-blue-500 cursor-pointer" />
         <SiJavascript className="fill-yellow-400 cursor-pointer" />
-        <SiTailwindcss className="fill-blue-400 cursor-pointer" />
+        <SiTypescript className="fill-blue-500"/>
         <FaReact className="fill-blue-500 cursor-pointer" />
+        <SiTailwindcss className="fill-blue-400 cursor-pointer" />
         <TbBrandNextjs className="cursor-pointer" />
       </div>
     </div>

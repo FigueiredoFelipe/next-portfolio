@@ -1,34 +1,59 @@
+# Portfolio Website
+
+## Project Purpose 
+The purpose of this project is to create a professional showcase of my front-end development skills and highlight my expertise in HTML5, CSS3, JavaScript, React, TypeScript, and Tailwind CSS. It serves as a platform to demonstrate my passion for web development and provide potential clients and collaborators with a comprehensive overview of my capabilities and previous work. The portfolio website aims to deliver an engaging and user-friendly experience, presenting my projects and achievements in an organized and visually appealing manner.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Tech Stack
+- HTML5
+- CSS3
+- JavaScript
+- React
+- TypeScript
+- Tailwind CSS
+- Next.js
+- Node-js
 
-First, run the development server:
+## How to Develop/Start Locally
+To develop/start the project locally, follow these steps:
 
+1. Clone the repository:
+git clone https://github.com/FigueiredoFelipe/next-portfolio.git
+
+2. Navigate to the project directory:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+cd next-portfolio
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Install the dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4. Start the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+5. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the website.
+Make sure to use the correct port number (3000) based on your configuration or preferences.
 
-## Learn More
+## Deployment Environment
+The portfolio website was created using Next.js, React, TypeScript, and Tailwind CSS. It can be deployed to any hosting environment that supports static websites. Some popular options include Netlify, Vercel, GitHub Pages, or any web server capable of serving static files.
 
-To learn more about Next.js, take a look at the following resources:
+## CI/CD
+For this project, I currently do not have CI/CD implemented. However, I plan to explore and implement Continuous Integration and Continuous Deployment practices in the future to automate the build, testing, and deployment processes.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Some common CI/CD tools and services that I may consider using include Jenkins, Travis CI, CircleCI, GitHub Actions, or GitLab CI/CD. These tools can help streamline the development workflow, enable automated testing, and facilitate smooth and efficient deployment of the portfolio website.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+If you wish to set up CI/CD for this project, you can explore these tools/services and configure them according to your specific requirements and preferences.
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Deployed on Vercel
+Deploy with Vercel Platform from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
+
+
+
