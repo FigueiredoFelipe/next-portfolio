@@ -1,5 +1,14 @@
 [
   {
+    "imgSrc": "felipedev",
+    "imgAlt": "Felipe Figueiredo Portfolio",
+    "title": "FELIPE FIGUEIREDO PORTFOLIO",
+    "details": "The purpose of this project is to create a professional showcase of my front-end development skills and highlight my expertise in HTML5, CSS3, JavaScript, React, TypeScript, Tailwind CSS, and Next.js. It serves as a platform to demonstrate my passion for web development and provide potential clients and collaborators with a comprehensive overview of my capabilities and previous work.",
+    "techs": "HTML5, CSS3, JAVASCRIPT, TYPESCRIPT, REACT, TAILWIND, NEXT.JS AND SANITY.",
+    "github": "https://github.com/FigueiredoFelipe/next-portfolio",
+    "liveDemo": "https://felipefigueiredodev.vercel.app"
+  },
+  {
     "imgSrc": "agtvw610",
     "imgAlt": "Arena Gaming Tv web site",
     "title": "ARENA GAMING TV",

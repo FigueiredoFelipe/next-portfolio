@@ -6,18 +6,20 @@ import portfolio from "../../data/portfolio.json";
 const Portfolio = forwardRef<HTMLElement>((_, ref) => {
   const agtvw610: StaticImageData = require("../UI/img/agtvw610.png");
   const advnegreiros: StaticImageData = require("../UI/img/advnegreiros.png");
+  const felipedev: StaticImageData = require("../UI/img/felipedev.png");
 
   const resolveImgSrc: { [key: string]: StaticImageData } = {
     agtvw610: agtvw610,
     advnegreiros: advnegreiros,
+    felipedev: felipedev,
   };
   return (
     <section className="font-Poppins text-gray-800 py-16 bg-gray-100" ref={ref}>
-      <main className="container m-auto justify-center w-full">
+      <main className="container m-auto justify-center w-full text-center md:text-start">
         <h1 className="text-blue-500 font-extrabold text-lg m-auto w-full md:w-8/12 px-5">
           PORTFOLIO
         </h1>
-        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5 shadow-sm pb-6">
+        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5 pb-6">
           Each project is a unique piece of development🧩
         </h4>
         {portfolio.map((item, index) => (

@@ -6,7 +6,7 @@ export function Footer() {
       <footer className="bg-gray-800">
         <div className="container mx-auto flex justify-center max-w-full p-6 md:p-12">
           <div className="max-w-full md:max-w-3/5">
-            <p className="text-white text-sm">
+            <p className="text-white text-xs md:text-sm">
               Copyright © 2023. All rights reserved.
             </p>
           </div>

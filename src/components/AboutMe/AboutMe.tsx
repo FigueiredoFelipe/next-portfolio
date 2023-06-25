@@ -8,7 +8,7 @@ const AboutMe = forwardRef<HTMLElement>((_, ref) => {
       <div className="container m-auto justify-center w-full">
         <main className="flex flex-col md:flex-row max-w-full justify-center">
           <div className="container mx-auto max-w-full flex flex-col md:flex-row w-full md:w-8/12 px-4">
-            <figure className="flex w-full justify-center items-center md:order-2 p-6">
+            <figure className="flex w-full justify-center items-center md:order-2 px-6 pb-4">
               <Image
                 className="rounded-lg h-auto max-h-56"
                 src={ho1Image}
@@ -16,13 +16,13 @@ const AboutMe = forwardRef<HTMLElement>((_, ref) => {
                 priority={false} // {false} | {true}
               />
             </figure>
-            <article className="max-w-lg md:order-1">
+            <article className="max-w-lg md:order-1 text-center md:text-start">
               <h1 className="text-blue-500 font-extrabold text-lg">ABOUT ME</h1>
               <h4 className="font-extrabold text-2xl">
                 A dedicated Front-end React Developer based in Belo Horizonte,
                 Brazil.
               </h4>
-              <p className="text-gray-500 py-3">
+              <p className="text-gray-500 pt-3 md:py-3">
                 As a Front-End Developer, I possess an impressive arsenal of
                 skills in HTML, CSS, JavaScript, React, and Tailwind. I excel in
                 designing and maintaining responsive websites that offer a
