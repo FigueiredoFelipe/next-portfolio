@@ -19,7 +19,7 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
         <h1 className="text-blue-500 font-extrabold text-lg m-auto w-full md:w-8/12 px-5">
           PORTFOLIO
         </h1>
-        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5 pb-6">
+        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5">
           Each project is a unique piece of development🧩
         </h4>
         {portfolio.map((item, index) => (
