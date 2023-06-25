@@ -34,7 +34,7 @@ export function Project({
         <main className="flex flex-col md:flex-row max-w-full justify-center">
           <div
             style={{ flexDirection: index % 2 ? "row" : "row-reverse" }}
-            className="container mx-auto max-w-full md:flex w-full md:w-8/12 px-4"
+            className="container mx-auto max-w-full md:flex w-full md:w-8/12 px-4  py-12"
           >
             <figure className="flex w-full justify-center items-center p-6 order-0">
               <Image
@@ -44,7 +44,7 @@ export function Project({
                 priority={imgPriority} // {false} | {true}
               />
             </figure>
-            <article className="max-w-lg text-center order-1 ">
+            <article className="max-w-lg text-center order-1">
               <h1 className="text-blue-500 font-extrabold text-lg"></h1>
               <h4 className="font-extrabold text-2xl">{title}</h4>
               <p className="text-gray-500 py-3 text-center md:text-justify">
