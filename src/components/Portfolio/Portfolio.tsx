@@ -24,6 +24,7 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
         </h4>
         {portfolio.map((item, index) => (
           <Project
+            key={item.id}
             index={index}
             imgSrc={resolveImgSrc[item.imgSrc]}
             imgAlt={item.imgAlt}
