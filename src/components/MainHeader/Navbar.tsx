@@ -1,3 +1,6 @@
+import React from "react";
+import NavLink from "./NavLink";
+
 interface NavbarProps {
   handleHomeClick: () => void;
   handleAboutMeClick: () => void;
@@ -18,30 +21,10 @@ export function Navbar({
           Felipe.dev
         </h3>
         <nav className="flex gap-6 font-semibold text-base p-4 max-w-fulln ml-auto items-end hidden md:flex">
-          <a
-            className="hover:text-[#075df5] cursor-pointer"
-            onClick={handleHomeClick}
-          >
-            Home
-          </a>
-          <a
-            className="hover:text-[#075df5] cursor-pointer"
-            onClick={handleAboutMeClick}
-          >
-            About
-          </a>
-          <a
-            className="hover:text-[#075df5] cursor-pointer"
-            onClick={handlePortfolioClick}
-          >
-            Projects
-          </a>
-          <a
-            className="hover:text-[#075df5] cursor-pointer"
-            onClick={handleContactClick}
-          >
-            Contact
-          </a>
+          <NavLink onClick={handleHomeClick}>Home</NavLink>
+          <NavLink onClick={handleAboutMeClick}>About</NavLink>
+          <NavLink onClick={handlePortfolioClick}>Portfolio</NavLink>
+          <NavLink onClick={handleContactClick}>Contact</NavLink>
         </nav>
       </div>
     </header>
