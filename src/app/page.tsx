@@ -15,30 +15,29 @@ function App() {
   const portfolioRef = useRef<HTMLDivElement>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  const handleHomeClick = () => {
-    homeRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleAboutMeClick = () => {
-    aboutMeRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handlePortfolioClick = () => {
-    portfolioRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleContactClick = () => {
-    contactRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
+  const links = [
+    {
+      text: "Home",
+      onClick: () => homeRef.current?.scrollIntoView({ behavior: "smooth" }),
+    },
+    {
+      text: "About",
+      onClick: () => aboutMeRef.current?.scrollIntoView({ behavior: "smooth" }),
+    },
+    {
+      text: "Portfolio",
+      onClick: () =>
+        portfolioRef.current?.scrollIntoView({ behavior: "smooth" }),
+    },
+    {
+      text: "Contact",
+      onClick: () => contactRef.current?.scrollIntoView({ behavior: "smooth" }),
+    },
+  ];
 
   return (
     <>
-      <Navbar
-        handleHomeClick={handleHomeClick}
-        handleAboutMeClick={handleAboutMeClick}
-        handlePortfolioClick={handlePortfolioClick}
-        handleContactClick={handleContactClick}
-      />
+      <Navbar links={links} />
       <Home ref={homeRef} />
       <AboutMe ref={aboutMeRef} />
       <Portfolio ref={portfolioRef} />

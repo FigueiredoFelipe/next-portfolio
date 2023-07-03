@@ -2,18 +2,10 @@ import React from "react";
 import NavLink from "./NavLink";
 
 interface NavbarProps {
-  handleHomeClick: () => void;
-  handleAboutMeClick: () => void;
-  handlePortfolioClick: () => void;
-  handleContactClick: () => void;
+  links: Array<{ text: string; onClick: () => void }>;
 }
 
-export function Navbar({
-  handleHomeClick,
-  handleAboutMeClick,
-  handlePortfolioClick,
-  handleContactClick,
-}: NavbarProps) {
+export function Navbar({ links }: NavbarProps) {
   return (
     <header className="container flex flex-wrap justify-between p-3 font-Poppins shadow-md max-w-full">
       <div className="container flex flex-wrap">
@@ -21,10 +13,11 @@ export function Navbar({
           Felipe.dev
         </h3>
         <nav className="flex gap-6 font-semibold text-base p-4 max-w-fulln ml-auto items-end hidden md:flex">
-          <NavLink onClick={handleHomeClick}>Home</NavLink>
-          <NavLink onClick={handleAboutMeClick}>About</NavLink>
-          <NavLink onClick={handlePortfolioClick}>Portfolio</NavLink>
-          <NavLink onClick={handleContactClick}>Contact</NavLink>
+          {links.map(({ text, onClick }) => (
+            <NavLink onClick={onClick} key={text}>
+              {text}
+            </NavLink>
+          ))}
         </nav>
       </div>
     </header>
