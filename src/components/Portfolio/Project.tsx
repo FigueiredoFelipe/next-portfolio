@@ -38,7 +38,7 @@ export function Project({
           >
             <figure className="flex flex-col w-full justify-center items-center p-6 order-0">
               <Image
-                className="rounded-lg h-auto max-h-56 max-w-sm border-gray-500 border"
+                className="rounded-lg h-auto max-h-56 max-w-xs border-gray-500 border"
                 src={imgSrc}
                 alt={imgAlt}
                 priority={imgPriority} // {false} | {true}
