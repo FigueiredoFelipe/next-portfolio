@@ -7,7 +7,7 @@ interface NavbarProps {
 
 export function Navbar({ links }: NavbarProps) {
   return (
-    <header className="container flex flex-wrap justify-between p-3 font-Poppins shadow-md max-w-full">
+    <header className="container flex flex-wrap justify-between p-3 shadow-md max-w-full">
       <div className="container flex flex-wrap">
         <h3 className="text-gray-800 text-xl cursor-pointer font-bold my-3 px-2 md:px-10">
           Felipe.dev
