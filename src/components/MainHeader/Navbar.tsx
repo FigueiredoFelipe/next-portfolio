@@ -8,7 +8,7 @@ interface NavbarProps {
 export function Navbar({ links }: NavbarProps) {
   return (
     <header className="container flex flex-wrap max-w-full">
-      <div className="flex flex-wrap w-full py-6 px-14">
+      <div className="flex flex-wrap w-full py-6 px-14 shadow-custom">
         <h3 className="text-[1.3rem] cursor-pointer font-bold items-center">
           Felipe.dev
         </h3>

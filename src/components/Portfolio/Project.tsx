@@ -29,7 +29,7 @@ export function Project({
   index,
 }: ProjectProps) {
   return (
-    <section className="py-2 shadow-sm border-fuchsia-600 border-2">
+    <section className="py-2 shadow-sm">
       <div className="container m-auto justify-center w-full">
         <main className="flex flex-col md:flex-row max-w-full justify-center">
           <div
@@ -61,7 +61,7 @@ export function Project({
                 )}
                 <a href="https://felipefigueiredodev.vercel.app" target="blank">
                   {liveDemo?.length > 0 && (
-                    <h5 className="flex flex-row cursor-pointer items-center hover:text-blue-500 duration-700 shadow-md">
+                    <h5 className="flex flex-row cursor-pointer items-center hover:text-blue-500 duration-700">
                       Live demo&nbsp;
                       <HiOutlineExternalLink className="" />
                     </h5>

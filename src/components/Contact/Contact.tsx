@@ -24,7 +24,7 @@ function Contact(_: any, ref: React.Ref<HTMLDivElement>) {
                 </div>
               </div>
               <div className="flex items-center w-full md:w-auto p-0 md:p-4">
-                <FaMailBulk className="fill-blue-500 text-3xl" />
+                <FaMailBulk className="fill-blue-500 text-3xl shadow-custom" />
                 <div className="ml-2">
                   <h3 className="font-bold text-base">Mail</h3>
                   <a
