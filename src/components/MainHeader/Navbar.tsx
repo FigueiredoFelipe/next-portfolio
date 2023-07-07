@@ -7,12 +7,12 @@ interface NavbarProps {
 
 export function Navbar({ links }: NavbarProps) {
   return (
-    <header className="container flex flex-wrap justify-between p-3 shadow-md max-w-full">
-      <div className="container flex flex-wrap">
-        <h3 className="text-gray-800 text-xl cursor-pointer font-bold my-3 px-2 md:px-10">
+    <header className="container flex flex-wrap max-w-full">
+      <div className="flex flex-wrap w-full py-6 px-14 text-[#2d2e32;]">
+        <h3 className="text-xl cursor-pointer font-bold items-center">
           Felipe.dev
         </h3>
-        <nav className="flex gap-6 font-semibold text-base p-4 max-w-fulln ml-auto items-end hidden md:flex">
+        <nav className="gap-6 font-semibold text-base max-w-full ml-auto items-end hidden md:flex">
           {links.map(({ text, onClick }) => (
             <NavLink onClick={onClick} key={text}>
               {text}

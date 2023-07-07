@@ -8,7 +8,7 @@ interface NavLinkProps {
 const NavLink: React.FC<NavLinkProps> = ({ onClick, children, ...props }) => {
   return (
     <a
-      className="hover:text-[#075df5] cursor-pointer"
+      className="hover:text-[#075df5] duration-200 cursor-pointer"
       onClick={onClick}
       {...props}
     >
