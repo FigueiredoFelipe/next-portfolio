@@ -12,29 +12,53 @@ export function TechStack() {
       </span>
       <div className="flex flex-wrap justify-center space-x-1 py-2 md:py-0 pl-2 ">
         <ul className="flex flex-wrap gap-5 items-center justify-center">
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <FaHtml5 size={40} className="fill-red-500 cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <FaHtml5
+              aria-label="HTML5"
+              size={40}
+              className="fill-red-500 cursor-pointer"
+            />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <FaCss3Alt size={40} className="fill-blue-500 cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <FaCss3Alt
+              aria-label="CSS3"
+              size={40}
+              className="fill-blue-500 cursor-pointer"
+            />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
             <SiJavascript
+              aria-label="JavaScript"
               size={40}
               className="fill-yellow-400 cursor-pointer"
             />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <SiTypescript size={40} className="fill-blue-500 cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <SiTypescript
+              aria-label="TypeScript"
+              size={40}
+              className="fill-blue-500 cursor-pointer"
+            />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <FaReact size={40} className="fill-blue-500 cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <FaReact
+              aria-label="React"
+              size={40}
+              className="fill-blue-500 cursor-pointer"
+            />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <SiTailwindcss className="fill-blue-400 cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <SiTailwindcss
+              aria-label="Tailwind"
+              className="fill-blue-400 cursor-pointer"
+            />
           </li>
-          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex">
-            <TbBrandNextjs size={40} className="cursor-pointer" />
+          <li className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+            <TbBrandNextjs
+              aria-label="Next.js"
+              size={40}
+              className="cursor-pointer"
+            />
           </li>
         </ul>
         {/* <FaHtml5 size={40} className="fill-red-500 cursor-pointer" />
