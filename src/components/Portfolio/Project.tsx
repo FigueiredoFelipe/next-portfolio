@@ -58,7 +58,7 @@ export function Project({
                     {techs}
                   </h5>
                 </div>
-                <div className="flex flex-row justify-center gap-5 text-xl">
+                <div className="flex flex-row justify-center gap-5 text-base md:text-xl">
                   <a
                     href="https://github.com/FigueiredoFelipe/next-portfolio"
                     target="blank"
