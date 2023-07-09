@@ -1,0 +1,32 @@
+[
+  {
+    "id": "1",
+    "imgSrc": "felipedev",
+    "imgAlt": "Felipe Figueiredo Portfolio",
+    "title": "FELIPE FIGUEIREDO PORTFOLIO",
+    "details": "As part of this project, I will showcase my front-end development skills, including HTML5, CSS3, JavaScript, React, TypeScript, Tailwind CSS, Next.js, and more. In addition to demonstrating my passion for web development, it gives potential clients an overview of my past work and capabilities.",
+    "techs": "HTML5, CSS3, JAVASCRIPT, TYPESCRIPT, REACT, TAILWIND, NEXT.JS AND SANITY.",
+    "github": "https://github.com/FigueiredoFelipe/next-portfolio",
+    "liveDemo": "https://felipefigueiredodev.vercel.app"
+  },
+  {
+    "id": "2",
+    "imgSrc": "agtvw610",
+    "imgAlt": "Arena Gaming Tv web site",
+    "title": "ARENA GAMING TV",
+    "details": "Collaborated with Arena Gaming TV to develop a countdown timer, news section, store, live stream list, and archives. With PHP, HTML, CSS3, and JS, we built a robust UI. Increased income by 29%, and ranked first on Google. Planned, deployed, tested, and supported.",
+    "techs": "PHP, HTML, CSS",
+    "github": "",
+    "liveDemo": ""
+  },
+  {
+    "id": "3",
+    "imgSrc": "advnegreiros",
+    "imgAlt": "Advocacia Negreiros",
+    "title": "ADVOCACIA NEGREIROS",
+    "details": "Integrated WordPress news system with responsive design.Enhanced visuals and functionality with CSS & JS.Building dynamic, engaging platforms with WordPress expertise.The result: a professional website that blends aesthetics and functionality.",
+    "techs": "WORDPRESS, JAVASCRIPT",
+    "github": "",
+    "liveDemo": ""
+  }
+]

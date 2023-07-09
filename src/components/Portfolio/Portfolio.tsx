@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { Project } from "./Project";
 import { StaticImageData } from "next/image";
-import portfolio from "../../data/portfolio.json";
+import portData from "../../data/portData.json";
 
 const Portfolio = forwardRef<HTMLElement>((_, ref) => {
   const agtvw610: StaticImageData = require("../UI/img/agtvw610.png");
@@ -14,15 +14,15 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
     felipedev: felipedev,
   };
   return (
-    <section className="font-Poppins text-gray-800 py-16 bg-gray-100" ref={ref}>
+    <section className="py-16 bg-gray-100" ref={ref}>
       <main className="container m-auto justify-center w-full text-center md:text-start">
         <h1 className="text-blue-500 font-extrabold text-lg m-auto w-full md:w-8/12 px-5">
           PORTFOLIO
         </h1>
-        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5">
+        <h4 className="font-extrabold text-2xl w-full md:w-8/12 m-auto px-5 pb-7">
           Each project is a unique piece of development🧩
         </h4>
-        {portfolio.map((item, index) => (
+        {portData.map((item, index) => (
           <Project
             key={item.id}
             index={index}
