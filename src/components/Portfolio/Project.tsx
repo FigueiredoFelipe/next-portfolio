@@ -65,7 +65,7 @@ export function Project({
                     className="group"
                   >
                     {github?.length > 0 && (
-                      <h5 className="flex flex-row cursor-pointer items-center group-hover:text-blue-500 duration-700 border-r-gray-950 border-l pr-4">
+                      <h5 className="flex flex-row cursor-pointer items-center group-hover:text-blue-500 duration-700 border-r-gray-950 pr-4">
                         Code&nbsp;
                         <FaGithub className="group-hover:fill-blue-500 duration-700" />
                       </h5>
@@ -80,7 +80,7 @@ export function Project({
                     {liveDemo?.length > 0 && (
                       <h5 className="flex flex-row cursor-pointer items-center group group-hover:text-blue-500 duration-700 border-l-gray-950 border-l pl-4">
                         Live demo&nbsp;
-                        <BiLinkExternal className="group-hover:fill-blue-500 duration-700 text-base" />
+                        <BiLinkExternal className="group-hover:fill-blue-500 duration-700 text-lg" />
                       </h5>
                     )}
                   </a>
