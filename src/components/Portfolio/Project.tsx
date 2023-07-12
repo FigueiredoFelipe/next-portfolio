@@ -1,5 +1,6 @@
 import { HiOutlineExternalLink } from "react-icons/hi";
 import { FaGithub } from "react-icons/fa";
+import { BiLinkExternal } from "react-icons/bi";
 import { StaticImageData } from "next/image";
 // import Container from "@/app/container";
 
@@ -57,15 +58,16 @@ export function Project({
                     {techs}
                   </h5>
                 </div>
-                <div className="flex flex-row justify-center gap-5 text-base md:text-xl">
+                <div className="flex flex-row mx-auto text-base md:text-xl">
                   <a
                     href="https://github.com/FigueiredoFelipe/next-portfolio"
                     target="blank"
+                    className="group"
                   >
                     {github?.length > 0 && (
-                      <h5 className="flex flex-row cursor-pointer items-center indent-5 hover:text-blue-500 duration-700">
+                      <h5 className="flex flex-row cursor-pointer items-center group-hover:text-blue-500 duration-700 border-r-gray-950 border-l pr-4">
                         Code&nbsp;
-                        <FaGithub className="hover:fill-blue-500 duration-700" />
+                        <FaGithub className="group-hover:fill-blue-500 duration-700" />
                       </h5>
                     )}
                   </a>
@@ -73,11 +75,12 @@ export function Project({
                   <a
                     href="https://felipefigueiredodev.vercel.app"
                     target="blank"
+                    className="group hover:text-blue-500 duration-700"
                   >
                     {liveDemo?.length > 0 && (
-                      <h5 className="flex flex-row cursor-pointer items-center hover:text-blue-500 duration-700">
+                      <h5 className="flex flex-row cursor-pointer items-center group group-hover:text-blue-500 duration-700 border-l-gray-950 border-l pl-4">
                         Live demo&nbsp;
-                        <HiOutlineExternalLink className="" />
+                        <BiLinkExternal className="group-hover:fill-blue-500 duration-700 text-base" />
                       </h5>
                     )}
                   </a>
