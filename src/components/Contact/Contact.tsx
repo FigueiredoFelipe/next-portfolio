@@ -15,7 +15,7 @@ function Contact(_: any, ref: React.Ref<HTMLDivElement>) {
             </h2>
             <div className="flex flex-wrap py-6 gap-10">
               <div className="flex items-center w-full md:w-auto pl-7 md:pl-0">
-                <span className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+                <span className="bg-white dark:bg-zinc-300 h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
                   <FaMapMarkedAlt className="fill-blue-500 text-3xl" />
                 </span>
                 <div className="ml-2">
@@ -27,7 +27,7 @@ function Contact(_: any, ref: React.Ref<HTMLDivElement>) {
               </div>
 
               <div className="flex items-center w-full md:w-auto p-0 md:p-4 pl-7 md:pl-0">
-                <span className="bg-white h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
+                <span className="bg-white dark:bg-zinc-300 h-16 w-16 rounded-full justify-center items-center flex shadow-custom">
                   <FaMailBulk className="fill-blue-500 text-3xl" />
                 </span>
                 <div className="ml-2">
