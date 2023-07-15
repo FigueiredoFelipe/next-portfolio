@@ -14,7 +14,7 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
     felipedev: felipedev,
   };
   return (
-    <section className="py-16 bg-gray-100" ref={ref}>
+    <section className="py-16 bg-gray-100 dark:bg-[#363636]" ref={ref}>
       <main className="container m-auto justify-center w-full text-center md:text-start">
         <h1 className="text-blue-500 font-extrabold text-lg m-auto w-full md:w-8/12 px-5">
           PORTFOLIO

@@ -8,8 +8,8 @@ import profimg from "../UI/img/profimg.jpg";
 
 const Home = forwardRef<HTMLElement>((_, ref) => {
   return (
-    <section className="font-Poppins bg-gray-100" ref={ref}>
-      <div className="container mx-auto bg-gray-100  justify-center w-full ">
+    <section className="font-Poppins bg-gray-100 dark:bg-[#363636]" ref={ref}>
+      <div className="container mx-auto bg-gray-100 dark:bg-[#363636] justify-center w-full ">
         <div className="flex flex-col md:flex-row max-w-full justify-center items-center ">
           <div className="container mx-auto py-6 md:py-16 max-w-full flex flex-col md:flex-row w-full md:w-8/12 px-4">
             <div className="flex order-2 justify-center items-center ">
