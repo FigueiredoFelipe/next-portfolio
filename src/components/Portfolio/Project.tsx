@@ -52,7 +52,7 @@ export function Project({
                 <h4 className="font-extrabold text-lg pt-4 md:pt-0 dark:text-[#202020]">
                   {title}
                 </h4>
-                <p className="text-gray-500 py-3 text-center md:text-justify font-medium text-base">
+                <p className="text-grey-500 py-3 text-center md:text-left font-medium text-base">
                   {details}
                 </p>
                 <div>
