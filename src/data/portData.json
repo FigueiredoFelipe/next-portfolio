@@ -1,6 +1,16 @@
 [
   {
     "id": "1",
+    "imgSrc": "todoapp",
+    "imgAlt": "To-do List Application picture",
+    "title": "TO-DO LIST APPLICATION",
+    "details": "This project is a fully functional To-do List App allowing users to add, delete, and reorder tasks. It includes validation for empty tasks and demonstrates effective state management and UI design. Showcases my front-end skills with HTML5, CSS3, JavaScript, React, TypeScript, Tailwind CSS, and Next.js.",
+    "techs": "HTML5, CSS3, JAVASCRIPT, TYPESCRIPT, REACT, TAILWIND, NEXT.JS.",
+    "github": "https://github.com/FigueiredoFelipe/next-to-do-list",
+    "liveDemo": "https://next-to-do-list-nine.vercel.app/"
+  },
+  {
+    "id": "2",
     "imgSrc": "felipedev",
     "imgAlt": "Felipe Figueiredo Portfolio",
     "title": "FELIPE FIGUEIREDO PORTFOLIO",
@@ -10,7 +20,7 @@
     "liveDemo": "https://felipefigueiredodev.vercel.app"
   },
   {
-    "id": "2",
+    "id": "3",
     "imgSrc": "agtvw610",
     "imgAlt": "Arena Gaming Tv web site",
     "title": "ARENA GAMING TV",
@@ -20,7 +30,7 @@
     "liveDemo": ""
   },
   {
-    "id": "3",
+    "id": "4",
     "imgSrc": "advnegreiros",
     "imgAlt": "Advocacia Negreiros",
     "title": "ADVOCACIA NEGREIROS",

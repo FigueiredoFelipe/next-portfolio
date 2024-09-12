@@ -1,7 +1,8 @@
-import { forwardRef } from "react";
-import { Project } from "./Project";
 import { StaticImageData } from "next/image";
+import { forwardRef } from "react";
+
 import portData from "../../data/portData.json";
+import { Project } from "./Project";
 
 const Portfolio = forwardRef<HTMLElement>((_, ref) => {
   const agtvw610: StaticImageData = require("../UI/img/agtvw610.png");
