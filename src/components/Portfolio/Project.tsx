@@ -61,11 +61,7 @@ export function Project({
                   </h5>
                 </div>
                 <div className="flex flex-row mx-auto text-base md:text-xl">
-                  <a
-                    href="https://github.com/FigueiredoFelipe/next-portfolio"
-                    target="blank"
-                    className="group"
-                  >
+                  <a href={github} target="blank" className="group">
                     {github?.length > 0 && (
                       <h5 className="flex flex-row cursor-pointer items-center group-hover:text-blue-500 duration-700 border-r-gray-950 pr-4 dark:text-[#202020]">
                         Code&nbsp;
@@ -75,7 +71,7 @@ export function Project({
                   </a>
 
                   <a
-                    href="https://felipefigueiredodev.vercel.app"
+                    href={liveDemo}
                     target="blank"
                     className="group hover:text-blue-500 duration-700"
                   >
