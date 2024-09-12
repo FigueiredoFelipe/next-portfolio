@@ -1,10 +1,9 @@
-import { forwardRef } from "react";
-
-import { FaLinkedin, FaGithubSquare } from "react-icons/fa";
-
-import { TechStack } from "./TechStack";
 import Image from "next/image";
+import { forwardRef } from "react";
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
+
 import profimg from "../UI/img/profile-pic.png";
+import { TechStack } from "./TechStack";
 
 const Home = forwardRef<HTMLElement>((_, ref) => {
   return (
@@ -23,11 +22,16 @@ const Home = forwardRef<HTMLElement>((_, ref) => {
             </div>
             <div className="max-w-full order-2 md:order-1">
               <h1 className="text-4xl md:text-6xl font-bold max-w-2xl py-2 leading-none md:leading-[1.2] text-center md:text-start">
-                Front-End React Developer
+                Full-Stack Developer
               </h1>
               <p className="max-w-lg text-sm md:text-base py-2 text-center md:text-justify">
-                Hi, I&apos;m Felipe Figueiredo. A passionate Front-end React
-                Developer based in Belo Horizonte, Brazil.
+                Hi, I&apos;m Felipe Figueiredo, a versatile and passionate
+                Full-Stack Developer based in Belo Horizonte, Brazil. With a
+                strong foundation in front-end technologies like React and
+                expertise in back-end development, I create efficient, scalable,
+                and intuitive web applications. My goal is to deliver
+                high-quality solutions that drive value for both users and
+                businesses.
               </p>
               <div className="text-3xl flex space-x-2 pt-2 justify-center md:justify-start">
                 <a

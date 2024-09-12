@@ -1,6 +1,7 @@
-import React from "react";
-import NavLink from "./NavLink";
 import ThemeSwitcher from "@/app/ThemeSwitcher";
+import React from "react";
+
+import NavLink from "./NavLink";
 
 interface NavbarProps {
   links: Array<{ text: string; onClick: () => void }>;
@@ -8,7 +9,7 @@ interface NavbarProps {
 
 export function Navbar({ links }: NavbarProps) {
   return (
-    <header className="container flex flex-wrap max-w-full">
+    <header className="container flex flex-wrap max-w-full sticky top-0 z-50 bg-white dark:bg-gray-900">
       <div className="flex flex-wrap w-full py-6 px-14 shadow-custom">
         <h3 className="text-[1.3rem] cursor-pointer font-bold items-center">
           Felipe.dev

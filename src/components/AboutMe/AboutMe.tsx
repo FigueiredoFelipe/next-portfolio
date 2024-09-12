@@ -1,6 +1,7 @@
-import { forwardRef } from "react";
-import ho1Image from "../UI/img/ho1-2-410px.png";
 import Image from "next/image";
+import { forwardRef } from "react";
+
+import ho1Image from "../UI/img/ho1-2-410px.png";
 
 const AboutMe = forwardRef<HTMLElement>((_, ref) => {
   return (
@@ -19,19 +20,20 @@ const AboutMe = forwardRef<HTMLElement>((_, ref) => {
             <article className="max-w-lg md:order-1 text-center md:text-start">
               <h1 className="text-blue-500 font-extrabold text-lg">ABOUT ME</h1>
               <h4 className="font-extrabold text-2xl">
-                A dedicated Front-end React Developer based in Belo Horizonte,
+                A dedicated Full-Stack Developer based in Belo Horizonte,
                 Brazil.
               </h4>
               <p className="text-gray-500 pt-3 md:py-3">
-                As a Front-End Developer, I possess an impressive arsenal of
-                skills in HTML, CSS, JavaScript, TypeScript, React, Tailwind,
-                and more. I excel in designing and maintaining responsive
-                websites that offer a smooth user experience. My expertise lies
-                in crafting dynamic, engaging interfaces through writing clean
-                and optimized code and utilizing cutting-edge development tools
-                and techniques. I am also a team player who thrives in
-                collaborating with cross-functional teams to produce outstanding
-                web applications.
+                I bring a comprehensive set of skills in both front-end and
+                back-end development, including HTML, CSS, JavaScript,
+                TypeScript, React, Tailwind, Node.js, and more. I excel at
+                designing and maintaining responsive, user-centric websites and
+                applications that provide seamless experiences. My expertise
+                spans crafting dynamic interfaces, writing clean, efficient
+                code, and utilizing the latest tools and technologies to create
+                optimized solutions. I thrive in collaborative environments,
+                working closely with cross-functional teams to deliver
+                exceptional and scalable web applications.
               </p>
             </article>
           </div>

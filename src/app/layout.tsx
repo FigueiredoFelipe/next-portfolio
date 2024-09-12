@@ -14,7 +14,7 @@ const poppins = Poppins({
 
 export const metadata = {
   title: "Felipe Figueiredo Portfolio",
-  description: "Front-end React Developer.",
+  description: "Fullstack Developer.",
 };
 
 export default function RootLayout({
