@@ -1,6 +1,16 @@
 [
   {
     "id": "1",
+    "imgSrc": "goalslistapp",
+    "imgAlt": "Goals List Application picture",
+    "title": "GOALS LIST APPLICATION",
+    "details": "This project is a Goals List App built with React Native and Expo. It allows users to add and delete goals by clicking on them. The app includes input validation, a clean-up function for canceled additions, a modal, and organized code structure following best practices. Demonstrates skills in mobile app development with React Native and JavaScript.",
+    "techs": "JAVASCRIPT, REACT NATIVE, EXPO, NODEJS.",
+    "github": "https://github.com/FigueiredoFelipe/GoalsListApp-RNative",
+    "liveDemo": "https://www.youtube.com/watch?v=enMEldNcfK0"
+  },
+  {
+    "id": "2",
     "imgSrc": "todoapp",
     "imgAlt": "To-do List Application picture",
     "title": "TO-DO LIST APPLICATION",
@@ -10,7 +20,7 @@
     "liveDemo": "https://next-to-do-list-nine.vercel.app/"
   },
   {
-    "id": "2",
+    "id": "3",
     "imgSrc": "felipedev",
     "imgAlt": "Felipe Figueiredo Portfolio",
     "title": "FELIPE FIGUEIREDO PORTFOLIO",
@@ -20,7 +30,7 @@
     "liveDemo": "https://felipefigueiredodev.vercel.app"
   },
   {
-    "id": "3",
+    "id": "4",
     "imgSrc": "agtvw610",
     "imgAlt": "Arena Gaming Tv web site",
     "title": "ARENA GAMING TV",
@@ -30,7 +40,7 @@
     "liveDemo": ""
   },
   {
-    "id": "4",
+    "id": "5",
     "imgSrc": "advnegreiros",
     "imgAlt": "Advocacia Negreiros",
     "title": "ADVOCACIA NEGREIROS",

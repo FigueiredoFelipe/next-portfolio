@@ -1,10 +1,10 @@
-import { HiOutlineExternalLink } from "react-icons/hi";
-import { FaGithub } from "react-icons/fa";
-import { BiLinkExternal } from "react-icons/bi";
 import { StaticImageData } from "next/image";
 // import Container from "@/app/container";
 
 import Image from "next/image";
+import { BiLinkExternal } from "react-icons/bi";
+import { FaGithub } from "react-icons/fa";
+import { HiOutlineExternalLink } from "react-icons/hi";
 
 interface ProjectProps {
   imgSrc: StaticImageData;
@@ -77,7 +77,7 @@ export function Project({
                   >
                     {liveDemo?.length > 0 && (
                       <h5 className="flex flex-row cursor-pointer items-center group group-hover:text-blue-500 duration-700 border-l-gray-950 border-l pl-4 dark:text-[#202020]">
-                        Live demo&nbsp;
+                        Demo&nbsp;
                         <BiLinkExternal className="group-hover:fill-blue-500 duration-700 text-lg" />
                       </h5>
                     )}
