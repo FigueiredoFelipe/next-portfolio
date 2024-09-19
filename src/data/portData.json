@@ -5,7 +5,7 @@
     "imgAlt": "Goals List Application picture",
     "title": "GOALS LIST APPLICATION",
     "details": "This project is a Goals List App built with React Native and Expo. It allows users to add and delete goals by clicking on them. The app includes input validation, a clean-up function for canceled additions, a modal, and organized code structure following best practices. Demonstrates skills in mobile app development with React Native and JavaScript.",
-    "techs": "JAVASCRIPT, REACT NATIVE, EXPO, NODEJS.",
+    "techs": "JAVASCRIPT, REACT NATIVE, EXPO.",
     "github": "https://github.com/FigueiredoFelipe/GoalsListApp-RNative",
     "liveDemo": "https://www.youtube.com/watch?v=enMEldNcfK0"
   },
