@@ -1,7 +1,5 @@
-import { FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
-
-import { SiTailwindcss, SiJavascript, SiTypescript } from "react-icons/si";
-
+import { FaAngular, FaCss3Alt, FaHtml5, FaReact } from "react-icons/fa";
+import { SiJavascript, SiTailwindcss, SiTypescript } from "react-icons/si";
 import { TbBrandNextjs } from "react-icons/tb";
 
 export function TechStack() {
@@ -58,6 +56,13 @@ export function TechStack() {
               aria-label="Next.js"
               size={40}
               className="text-black cursor-pointer"
+            />
+          </li>
+          <li className="bg-white dark:bg-zinc-300 h-14 w-14 md:h-16 md:w-16 rounded-full justify-center items-center flex shadow-custom">
+            <FaAngular
+              aria-label="Next.js"
+              size={40}
+              className="text-[#DD0031] cursor-pointer"
             />
           </li>
         </ul>

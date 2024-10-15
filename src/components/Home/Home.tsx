@@ -27,9 +27,9 @@ const Home = forwardRef<HTMLElement>((_, ref) => {
               <p className="max-w-lg text-sm md:text-base py-2 text-center md:text-justify">
                 Hi, I&apos;m Felipe Figueiredo, a versatile and passionate
                 Full-Stack Developer based in Belo Horizonte, Brazil. With a
-                strong foundation in front-end technologies like React and
-                expertise in back-end development, I create efficient, scalable,
-                and intuitive web applications. My goal is to deliver
+                strong foundation in front-end technologies like React, Angular
+                and expertise in back-end development, I create efficient,
+                scalable, and intuitive web applications. My goal is to deliver
                 high-quality solutions that drive value for both users and
                 businesses.
               </p>
