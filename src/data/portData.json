@@ -1,6 +1,16 @@
 [
   {
     "id": "1",
+    "imgSrc": "investmentLogo",
+    "imgAlt": "Investment Calculator picture",
+    "title": "INVESTMENT CALCULATOR",
+    "details": "A straightforward Angular app for calculating investment growth based on user inputs: starting amount, annual contributions, years, and interest rate. It provides clear projections of future investment value, showcasing Angular’s strength in building dynamic, interactive applications.",
+    "techs": "JAVASCRIPT, ANGULAR.",
+    "github": "https://github.com/FigueiredoFelipe/investment-calculator",
+    "liveDemo": "https://investment-calculator-puce.vercel.app/"
+  },
+  {
+    "id": "2",
     "imgSrc": "goalslistapp",
     "imgAlt": "Goals List Application picture",
     "title": "GOALS LIST APPLICATION",
@@ -10,7 +20,7 @@
     "liveDemo": "https://www.youtube.com/watch?v=enMEldNcfK0"
   },
   {
-    "id": "2",
+    "id": "3",
     "imgSrc": "todoapp",
     "imgAlt": "To-do List Application picture",
     "title": "TO-DO LIST APPLICATION",
@@ -20,7 +30,7 @@
     "liveDemo": "https://next-to-do-list-nine.vercel.app/"
   },
   {
-    "id": "3",
+    "id": "4",
     "imgSrc": "felipedev",
     "imgAlt": "Felipe Figueiredo Portfolio",
     "title": "FELIPE FIGUEIREDO PORTFOLIO",
@@ -30,7 +40,7 @@
     "liveDemo": "https://felipefigueiredodev.vercel.app"
   },
   {
-    "id": "4",
+    "id": "5",
     "imgSrc": "agtvw610",
     "imgAlt": "Arena Gaming Tv web site",
     "title": "ARENA GAMING TV",
@@ -40,7 +50,7 @@
     "liveDemo": ""
   },
   {
-    "id": "5",
+    "id": "6",
     "imgSrc": "advnegreiros",
     "imgAlt": "Advocacia Negreiros",
     "title": "ADVOCACIA NEGREIROS",
