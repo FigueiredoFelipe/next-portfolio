@@ -3,11 +3,11 @@ import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 export function Footer() {
   return (
     <footer className="bg-gray-800 dark:bg-zinc-900">
-      <div className="container mx-auto flex justify-between items-center p-6 md:p-12">
+      <div className="container mx-auto flex justify-center items-center md:p-12">
         <div className="text-white text-xs md:text-sm font-semibold">
           <p>Copyright © 2023. All rights reserved.</p>
         </div>
-        <div className="text-2xl text-white flex space-x-4">
+        <div className="text-2xl text-white flex space-x-4 pl-4">
           <a
             href="https://www.linkedin.com/in/fjnfigueiredo/"
             target="_blank"

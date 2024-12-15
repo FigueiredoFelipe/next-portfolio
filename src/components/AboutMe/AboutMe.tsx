@@ -26,9 +26,9 @@ const AboutMe = forwardRef<HTMLElement>((_, ref) => {
               <p className="text-gray-500 pt-3 md:py-3">
                 I bring a comprehensive set of skills in both front-end and
                 back-end development, including HTML, CSS, JavaScript,
-                TypeScript, React, Tailwind, Node.js, and more. I excel at
-                designing and maintaining responsive, user-centric websites and
-                applications that provide seamless experiences. My expertise
+                TypeScript, React, Angular, Tailwind, Node.js, and more. I excel
+                at designing and maintaining responsive, user-centric websites
+                and applications that provide seamless experiences. My expertise
                 spans crafting dynamic interfaces, writing clean, efficient
                 code, and utilizing the latest tools and technologies to create
                 optimized solutions. I thrive in collaborative environments,
