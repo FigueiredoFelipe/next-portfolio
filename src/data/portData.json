@@ -1,6 +1,16 @@
 [
   {
     "id": "1",
+    "imgSrc": "tinyChatApp",
+    "imgAlt": "Tiny Chat App picture",
+    "title": "Tiny Chat App AI (Gemini LLM)",
+    "details": "A fullstack chat application built with React and NestJS. It handles user input, validates messages, and integrates with the Gemini LLM to generate contextual replies. Includes features like loading states, error handling, optimistic UI updates, and a clean component structure with Tailwind. The backend is containerized with Docker and tested with Jest.",
+    "techs": "JAVASCRIPT, REACT, TYPESCRIPT, NESTJS, TAILWIND, JEST, DOCKER, GEMINI LLM.",
+    "github": "https://github.com/FigueiredoFelipe/tiny-chat-app-fullstack-ai",
+    "liveDemo": "/"
+  },
+  {
+    "id": "2",
     "imgSrc": "crudangular",
     "imgAlt": "CRUD Angular picture",
     "title": "CRUD Angular",
@@ -10,7 +20,7 @@
     "liveDemo": "https://angular-18-crud-eight.vercel.app/"
   },
   {
-    "id": "2",
+    "id": "3",
     "imgSrc": "investmentLogo",
     "imgAlt": "Investment Calculator picture",
     "title": "INVESTMENT CALCULATOR",
@@ -20,7 +30,7 @@
     "liveDemo": "https://investment-calculator-puce.vercel.app/"
   },
   {
-    "id": "3",
+    "id": "4",
     "imgSrc": "goalslistapp",
     "imgAlt": "Goals List Application picture",
     "title": "GOALS LIST APPLICATION",
@@ -30,7 +40,7 @@
     "liveDemo": "https://www.youtube.com/watch?v=enMEldNcfK0"
   },
   {
-    "id": "4",
+    "id": "5",
     "imgSrc": "todoapp",
     "imgAlt": "To-do List Application picture",
     "title": "TO-DO LIST APPLICATION",
@@ -40,7 +50,7 @@
     "liveDemo": "https://next-to-do-list-nine.vercel.app/"
   },
   {
-    "id": "5",
+    "id": "6",
     "imgSrc": "felipedev",
     "imgAlt": "Felipe Figueiredo Portfolio",
     "title": "FELIPE FIGUEIREDO PORTFOLIO",
@@ -50,7 +60,7 @@
     "liveDemo": "https://felipefigueiredodev.vercel.app"
   },
   {
-    "id": "6",
+    "id": "7",
     "imgSrc": "agtvw610",
     "imgAlt": "Arena Gaming Tv web site",
     "title": "ARENA GAMING TV",
@@ -60,7 +70,7 @@
     "liveDemo": ""
   },
   {
-    "id": "7",
+    "id": "8",
     "imgSrc": "advnegreiros",
     "imgAlt": "Advocacia Negreiros",
     "title": "ADVOCACIA NEGREIROS",

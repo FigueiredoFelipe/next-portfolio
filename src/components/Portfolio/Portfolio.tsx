@@ -12,6 +12,7 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
   const goalslistapp: StaticImageData = require("../UI/img/goalslistapp.png");
   const investmentLogo: StaticImageData = require("../UI/img/investmentLogo.png");
   const crudangular: StaticImageData = require("../UI/img/crudangular.png");
+  const tinyChatApp: StaticImageData = require("../UI/img/tiny-chat-app-fullstack-ai.png");
 
   const resolveImgSrc: { [key: string]: StaticImageData } = {
     agtvw610: agtvw610,
@@ -21,6 +22,7 @@ const Portfolio = forwardRef<HTMLElement>((_, ref) => {
     goalslistapp: goalslistapp,
     investmentLogo: investmentLogo,
     crudangular: crudangular,
+    tinyChatApp: tinyChatApp,
   };
   return (
     <section className="py-16 bg-gray-100 dark:bg-[#363636]" ref={ref}>
