@@ -7,7 +7,7 @@
     "details": "A fullstack chat application built with React and NestJS. It handles user input, validates messages, and integrates with the Gemini LLM to generate contextual replies. Includes features like loading states, error handling, optimistic UI updates, and a clean component structure with Tailwind. The backend is containerized with Docker and tested with Jest.",
     "techs": "JAVASCRIPT, REACT, TYPESCRIPT, NESTJS, TAILWIND, JEST, DOCKER, GEMINI LLM.",
     "github": "https://github.com/FigueiredoFelipe/tiny-chat-app-fullstack-ai",
-    "liveDemo": ""
+    "liveDemo": "https://www.youtube.com/watch?v=OGm4u-IeRfM"
   },
   {
     "id": "2",
