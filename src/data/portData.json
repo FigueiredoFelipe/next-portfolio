@@ -33,9 +33,9 @@
     "id": "4",
     "imgSrc": "goalslistapp",
     "imgAlt": "Goals List Application picture",
-    "title": "GOALS LIST APPLICATION",
-    "details": "This project is a Goals List App built with React Native and Expo. It allows users to add and delete goals by clicking on them. The app includes input validation, a clean-up function for canceled additions, a modal, and organized code structure following best practices. Demonstrates skills in mobile app development with React Native and JavaScript.",
-    "techs": "JAVASCRIPT, REACT NATIVE, EXPO.",
+    "title": "GOALS LIST + SANITY CMS LAB",
+  "details": "React Native app extended with a full Sanity CMS integration as a learning laboratory. Features a goals manager (add/delete with input validation and modal) alongside a live content feed powered by Sanity's Content Lake. Implements GROQ queries with reference resolution, pull-to-refresh, and Portable Text rendering for rich content — the exact stack used in production at WaterfowlAI projects.",
+  "techs": "REACT NATIVE, EXPO, SANITY CMS, GROQ, PORTABLE TEXT, TYPESCRIPT.",
     "github": "https://github.com/FigueiredoFelipe/GoalsListApp-RNative",
     "liveDemo": "https://www.youtube.com/watch?v=enMEldNcfK0"
   },
