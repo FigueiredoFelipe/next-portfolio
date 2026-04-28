@@ -22,7 +22,7 @@ export default function Contact() {
             fjnfigueiredo@gmail.com
           </a>
           <a
-            href="https://linkedin.com/in/felipefigueiredo"
+            href="https://www.linkedin.com/in/fjnfigueiredo/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

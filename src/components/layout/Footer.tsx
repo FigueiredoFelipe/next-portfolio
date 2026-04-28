@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         <div className="flex gap-4">
           <a
-            href="https://linkedin.com/in/felipefigueiredo"
+            href="https://www.linkedin.com/in/fjnfigueiredo/"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"

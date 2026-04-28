@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllProjectSlugs } from '@/lib/sanity'
 
-const BASE_URL = 'https://felipefigueiredo.dev'
+const BASE_URL = 'https://felipefigueiredodev.vercel.app'
 
 export const revalidate = 3600
 
