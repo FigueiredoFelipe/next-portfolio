@@ -3,17 +3,49 @@
 @tailwind utilities;
 
 :root {
-  --dark-00: #000000;
-  --dark-01: #202020;
-  --dark-02: #363636;
+  --bg: #f8f7f4;
+  --bg-surface: #ffffff;
+  --border: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-muted: #9ca3af;
 }
 
-.toggle-checkbox:checked {
-  @apply: right-0 border-green-400;
-  right: 0;
-  border-color: #68d391;
+.dark {
+  --bg: #0d0f14;
+  --bg-surface: #111318;
+  --border: #1f2937;
+  --text-primary: #f8fafc;
+  --text-secondary: #4b5563;
+  --text-muted: #374151;
 }
-.toggle-checkbox:checked + .toggle-label {
-  @apply: bg-green-400;
-  background-color: #68d391;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.05) 1px, transparent 0);
+  background-size: 20px 20px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.dark body::before {
+  background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.03) 1px, transparent 0);
+}
+
+main, header, footer {
+  position: relative;
+  z-index: 1;
 }
