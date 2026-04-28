@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: { domains: ["media.licdn.com"] },
-};
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+    ],
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
