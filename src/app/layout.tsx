@@ -46,6 +46,13 @@ export const metadata: Metadata = {
       'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web applications with React, NestJS, TypeScript, and AI integrations.',
     creator: '@felipefigueiredo',
   },
+  icons: {
+    icon: [
+      { url: '/icon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: '32x32' },
+    ],
+    apple: '/apple-icon.svg',
+  },
   robots: {
     index: true,
     follow: true,

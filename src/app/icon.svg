@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Background: near-black rounded square -->
+  <rect width="32" height="32" rx="6" fill="#111111"/>
+
+  <!-- Left angle bracket — warm gold -->
+  <polyline
+    points="8.5,10.5 5.5,16 8.5,21.5"
+    stroke="#C09B5A"
+    stroke-width="1.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Right angle bracket — warm gold -->
+  <polyline
+    points="23.5,10.5 26.5,16 23.5,21.5"
+    stroke="#C09B5A"
+    stroke-width="1.6"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- F monogram — crisp white, geometric -->
+  <!-- Vertical stem -->
+  <line x1="13" y1="10" x2="13" y2="22" stroke="#F5F5F4" stroke-width="2" stroke-linecap="round"/>
+  <!-- Top crossbar (full width) -->
+  <line x1="13" y1="10" x2="20" y2="10" stroke="#F5F5F4" stroke-width="2" stroke-linecap="round"/>
+  <!-- Mid crossbar (three-quarter width — the detail that makes F an F) -->
+  <line x1="13" y1="16" x2="18.5" y2="16" stroke="#F5F5F4" stroke-width="2" stroke-linecap="round"/>
+</svg>
