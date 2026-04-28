@@ -13,11 +13,11 @@
 
 .dark {
   --bg: #0d0f14;
-  --bg-surface: #111318;
-  --border: #1f2937;
-  --text-primary: #f8fafc;
-  --text-secondary: #4b5563;
-  --text-muted: #374151;
+  --bg-surface: #13161f;
+  --border: #252b38;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
 }
 
 html {
