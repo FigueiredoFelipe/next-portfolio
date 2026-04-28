@@ -46,9 +46,6 @@ export default function Hero({ openToWork }: Props) {
             </h1>
           </Item>
           <Item {...(itemProps as object)}>
-            <p className="text-sm text-[var(--text-secondary)] leading-relaxed mb-1">
-              React · NestJS · TypeScript · AI Integrations
-            </p>
             <p className="text-sm text-[var(--text-muted)] mb-8">
               Belo Horizonte, Brazil
             </p>
