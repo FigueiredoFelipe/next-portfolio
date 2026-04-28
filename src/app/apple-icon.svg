@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180" fill="none">
+  <!-- Background -->
+  <rect width="180" height="180" rx="36" fill="#111111"/>
+
+  <!-- Left angle bracket -->
+  <polyline
+    points="46,56 28,90 46,124"
+    stroke="#C09B5A"
+    stroke-width="9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Right angle bracket -->
+  <polyline
+    points="134,56 152,90 134,124"
+    stroke="#C09B5A"
+    stroke-width="9"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- F monogram -->
+  <!-- Vertical stem -->
+  <line x1="72" y1="54" x2="72" y2="126" stroke="#F5F5F4" stroke-width="11" stroke-linecap="round"/>
+  <!-- Top crossbar -->
+  <line x1="72" y1="54" x2="114" y2="54" stroke="#F5F5F4" stroke-width="11" stroke-linecap="round"/>
+  <!-- Mid crossbar -->
+  <line x1="72" y1="90" x2="106" y2="90" stroke="#F5F5F4" stroke-width="11" stroke-linecap="round"/>
+</svg>
