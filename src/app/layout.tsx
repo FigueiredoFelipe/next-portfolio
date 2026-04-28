@@ -53,10 +53,31 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Felipe Figueiredo',
+  jobTitle: 'Fullstack Developer',
+  url: 'https://felipefigueiredo.dev',
+  sameAs: [
+    'https://github.com/FigueiredoFelipe',
+    'https://linkedin.com/in/felipefigueiredo',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Belo Horizonte',
+    addressCountry: 'BR',
+  },
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} ${poppins.variable} font-sans antialiased`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>
           <Navbar />
           <main>{children}</main>
