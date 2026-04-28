@@ -25,25 +25,25 @@ export const metadata: Metadata = {
     template: '%s | Felipe Figueiredo',
   },
   description:
-    'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web applications with React, NestJS, TypeScript, and AI integrations.',
-  keywords: ['Fullstack Developer', 'React', 'NestJS', 'TypeScript', 'Next.js', 'AI', 'Brazil'],
+    'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web and mobile applications with modern technologies and AI integrations.',
+  keywords: ['Fullstack Developer', 'React', 'React Native', 'Flutter', 'NestJS', 'TypeScript', 'Next.js', 'AI', 'Brazil', 'Mobile', 'Web'],
   authors: [{ name: 'Felipe Figueiredo' }],
   creator: 'Felipe Figueiredo',
-  metadataBase: new URL('https://felipefigueiredo.dev'),
+  metadataBase: new URL('https://felipefigueiredodev.vercel.app'),
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://felipefigueiredo.dev',
+    url: 'https://felipefigueiredodev.vercel.app',
     siteName: 'Felipe Figueiredo',
     title: 'Felipe Figueiredo — Fullstack Developer',
     description:
-      'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web applications with React, NestJS, TypeScript, and AI integrations.',
+      'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web and mobile applications with modern technologies and AI integrations.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Felipe Figueiredo — Fullstack Developer',
     description:
-      'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web applications with React, NestJS, TypeScript, and AI integrations.',
+      'Fullstack Developer based in Belo Horizonte, Brazil. Building scalable web and mobile applications with modern technologies and AI integrations.',
     creator: '@felipefigueiredo',
   },
   icons: {
@@ -65,10 +65,10 @@ const jsonLd = {
   '@type': 'Person',
   name: 'Felipe Figueiredo',
   jobTitle: 'Fullstack Developer',
-  url: 'https://felipefigueiredo.dev',
+  url: 'https://felipefigueiredodev.vercel.app',
   sameAs: [
     'https://github.com/FigueiredoFelipe',
-    'https://linkedin.com/in/felipefigueiredo',
+    'https://www.linkedin.com/in/fjnfigueiredo/',
   ],
   address: {
     '@type': 'PostalAddress',
