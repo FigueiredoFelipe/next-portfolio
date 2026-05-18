@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { readFileSync } from 'fs'
 import { join } from 'path'
+import Script from 'next/script'
 
 export const metadata: Metadata = {
   title: 'CLAUDE.md Token Optimization — Case Study',
@@ -59,6 +60,11 @@ function parseCaseStudyHtml() {
 .lang-bar {
   top: 64px !important;
   z-index: 49 !important;
+}
+/* Sections are visible by default — scroll-reveal is progressive enhancement */
+.reveal {
+  opacity: 1 !important;
+  transform: none !important;
 }`
 
   // Extract body content
@@ -181,8 +187,10 @@ export default function TokenOptimizationPage() {
         </div>
       </div>
 
-      {/* Case study interactivity — defaults to English */}
-      <script dangerouslySetInnerHTML={{ __html: scriptContent + '\nsetLang("en");' }} />
+      {/* Case study interactivity — next/script guarantees execution after hydration */}
+      <Script id="case-study-init" strategy="afterInteractive">
+        {scriptContent + '\nsetLang("en");'}
+      </Script>
     </>
   )
 }
