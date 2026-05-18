@@ -179,12 +179,15 @@ export default function TokenOptimizationPage() {
         </p>
 
         {/* Metrics strip */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--border)] border border-[var(--border)] rounded-sm overflow-hidden mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[var(--border)] border border-[var(--border)] rounded-sm overflow-hidden mb-3">
           <Metric value="42" label="Initial Score" color="amber" />
           <Metric value="96" label="Final Score" color="green" />
           <Metric value="−59%" label="Tokens Saved" color="green" />
           <Metric value="3" label="Iterations" color="indigo" />
         </div>
+        <p className="text-center text-[0.6rem] font-mono tracking-widest uppercase text-[var(--text-muted)] mb-16">
+          Score via /refine — rates clarity · completeness · efficiency · goal alignment
+        </p>
       </AnimatedSection>
 
       {/* ── 01 The Problem ── */}
@@ -211,7 +214,7 @@ export default function TokenOptimizationPage() {
             <CodeLine n={2} variant="bad">This is Felipe Figueiredo&apos;s central life management space...</CodeLine>
             <CodeLine n={3} variant="dim">&nbsp;</CodeLine>
             <CodeLine n={4} variant="heading">## Context</CodeLine>
-            <CodeLine n={5} variant="bad">- Email: socials@brightcurios.com</CodeLine>
+            <CodeLine n={5} variant="bad">- Email: user@example.com</CodeLine>
             <CodeLine n={6} variant="bad">- Main environment: Claude Code via terminal...</CodeLine>
             <CodeLine n={7} variant="bad">- Why here and not the browser: access to MCPs...</CodeLine>
             <CodeLine n={8} variant="dim">&nbsp;</CodeLine>
@@ -256,9 +259,12 @@ export default function TokenOptimizationPage() {
                 Iteration 01
               </p>
               <div className="font-display text-4xl font-light text-amber-400 mb-3">65</div>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-3">
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-2">
                 Removal of all narrative, justifications, and duplicates. Preferences converted into
                 direct, compact directives.
+              </p>
+              <p className="text-[0.65rem] font-mono text-[var(--text-muted)] leading-relaxed mb-3 italic">
+                First cut: &ldquo;## How to Use This Space&rdquo; — describes the tool, doesn&apos;t instruct behavior.
               </p>
               <div className="flex flex-wrap gap-1.5">
                 <span className="font-mono text-[0.6rem] px-2 py-0.5 rounded bg-red-500/10 text-red-400">
@@ -279,9 +285,12 @@ export default function TokenOptimizationPage() {
                 Iteration 02
               </p>
               <div className="font-display text-4xl font-light text-orange-400 mb-3">84</div>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-3">
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-2">
                 Added workflow directives mapping the sequence of available skills and tools.
                 Explicit instruction about the persistent memory system.
+              </p>
+              <p className="text-[0.65rem] font-mono text-[var(--text-muted)] leading-relaxed mb-3 italic">
+                Key add: explicit skill sequence — model stops inferring the right tool per task.
               </p>
               <div className="flex flex-wrap gap-1.5">
                 <span className="font-mono text-[0.6rem] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
@@ -299,9 +308,12 @@ export default function TokenOptimizationPage() {
                 Iteration 03 — Final
               </p>
               <div className="font-display text-4xl font-light text-emerald-400 mb-3">96</div>
-              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-3">
+              <p className="text-xs text-[var(--text-secondary)] leading-relaxed mb-2">
                 Skill sequence clarified, zero memory redundancies, ultra-compact format with maximum
                 instruction density.
+              </p>
+              <p className="text-[0.65rem] font-mono text-[var(--text-muted)] leading-relaxed mb-3 italic">
+                Final cut: profile and stack moved to memory — CLAUDE.md left with pure directives only.
               </p>
               <div className="flex flex-wrap gap-1.5">
                 <span className="font-mono text-[0.6rem] px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400">
@@ -363,7 +375,7 @@ export default function TokenOptimizationPage() {
                 <CodeLine variant="heading"># HQ — Quartel General</CodeLine>
                 <CodeLine variant="bad">This is the central management space...</CodeLine>
                 <CodeLine variant="heading">## Context</CodeLine>
-                <CodeLine variant="bad">- Email: socials@...</CodeLine>
+                <CodeLine variant="bad">- Email: user@example.com</CodeLine>
                 <CodeLine variant="bad">- Main environment: Claude Code...</CodeLine>
                 <CodeLine variant="bad">- Why here and not the browser:...</CodeLine>
                 <CodeLine variant="heading">## Work Preferences</CodeLine>
@@ -429,7 +441,7 @@ export default function TokenOptimizationPage() {
               {
                 id: 'P-04',
                 title: 'Tokens accumulate — always measure',
-                desc: '220 tokens × 500 conversations = 110,000 wasted tokens. Context optimization is an engineering discipline, not just an aesthetic choice.',
+                desc: '220 tokens × 500 daily sessions × $0.003/1k ≈ $0.33/day — ~$120/year. At Opus pricing, multiply ×5. Context optimization is an engineering discipline, not just an aesthetic choice.',
               },
             ].map((p) => (
               <div
@@ -453,10 +465,10 @@ export default function TokenOptimizationPage() {
       <AnimatedSection delay={0.13}>
         <div className="border-t border-[var(--border)] pt-10 text-center">
           <p className="font-display font-light text-xl text-[var(--text-primary)] mb-2">
-            Enjoyed this? Let&apos;s build something together.
+            Building something AI-native?
           </p>
           <p className="text-sm text-[var(--text-secondary)] mb-8">
-            I work with teams that care about craft, performance, and AI-native workflows.
+            I&apos;m a senior fullstack engineer available for remote work — from architecture to prompt engineering.
           </p>
           <div className="flex gap-3 justify-center flex-wrap">
             <Link
