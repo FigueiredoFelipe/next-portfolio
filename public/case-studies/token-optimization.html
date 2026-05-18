@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Token Optimization — Prompt Engineering Case Study</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #09090e;
+      --surface:      #0f0f17;
+      --surface-2:    #16161f;
+      --border:       #1c1c2a;
+      --border-hi:    #2a2a3e;
+      --text:         #8a8aa8;
+      --text-bright:  #e8e8f2;
+      --text-dim:     #484860;
+      --green:        #00e599;
+      --green-glow:   rgba(0, 229, 153, 0.12);
+      --amber:        #f59e0b;
+      --amber-dim:    rgba(245, 158, 11, 0.12);
+      --red:          #ff4757;
+      --red-dim:      rgba(255, 71, 87, 0.12);
+      --indigo:       #6366f1;
+      --indigo-dim:   rgba(99, 102, 241, 0.12);
+      --font-serif:   Georgia, 'Times New Roman', Times, serif;
+      --font-sans:    -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      --font-mono:    'Consolas', 'Courier New', 'Courier', monospace;
+      --max:          880px;
+      --radius:       10px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* Subtle dot-grid background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: radial-gradient(circle, #1e1e30 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Glow at top */
+    body::after {
+      content: '';
+      position: fixed;
+      top: -180px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 360px;
+      background: radial-gradient(ellipse, rgba(0,229,153,0.07) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    /* ─── Lang bar ─── */
+    .lang-bar {
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      padding: 10px 0;
+      background: rgba(9, 9, 14, 0.82);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .lang-bar .wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lang-bar-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .lang-pills {
+      display: flex;
+      background: var(--surface-2);
+      border: 1px solid var(--border-hi);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .lang-btn {
+      padding: 5px 16px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      border: none;
+      background: transparent;
+      color: var(--text-dim);
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-btn.active {
+      background: var(--green);
+      color: #000;
+    }
+
+    /* ─── Hero ─── */
+    .hero {
+      padding: 72px 0 56px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 22px;
+      opacity: 0;
+      animation: rise 0.7s 0.1s cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(30px, 5vw, 52px);
+      font-weight: 400;
+      color: var(--text-bright);
+      line-height: 1.14;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: rise 0.7s 0.2s cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .hero-sub {
+      font-size: 15px;
+      color: var(--text);
+      max-width: 580px;
+      margin-bottom: 48px;
+      line-height: 1.75;
+      opacity: 0;
+      animation: rise 0.7s 0.3s cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    /* ─── Metric strip ─── */
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 84px;
+      opacity: 0;
+      animation: rise 0.7s 0.4s cubic-bezier(.16,1,.3,1) forwards;
+    }
+
+    .metric {
+      background: var(--surface);
+      padding: 22px 20px;
+      text-align: center;
+    }
+
+    .metric-val {
+      font-family: var(--font-serif);
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--text-bright);
+      margin-bottom: 7px;
+    }
+    .metric-val.g { color: var(--green); }
+    .metric-val.a { color: var(--amber); }
+    .metric-val.i { color: var(--indigo); }
+
+    .metric-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    /* ─── Sections ─── */
+    .section {
+      padding: 56px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .sec-hd {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .sec-n {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.15em;
+      flex-shrink: 0;
+    }
+
+    .sec-title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--text-bright);
+      letter-spacing: -0.02em;
+    }
+
+    .body-text {
+      font-size: 15px;
+      color: var(--text);
+      max-width: 620px;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    /* ─── Code blocks ─── */
+    .codeblock {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .cb-head {
+      background: var(--surface-2);
+      padding: 9px 16px;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cb-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--border-hi);
+    }
+
+    .cb-body { padding: 18px 20px; }
+
+    .cl { display: flex; gap: 14px; min-height: 22px; }
+    .ln { color: var(--text-dim); user-select: none; min-width: 18px; text-align: right; flex-shrink: 0; font-size: 11px; padding-top: 2px; }
+    .ct { color: var(--text); }
+    .ct.k  { color: #c792ea; }
+    .ct.bad { color: var(--red); background: var(--red-dim); padding: 1px 5px; border-radius: 3px; }
+    .ct.ok  { color: var(--green); }
+    .ct.key { color: var(--amber); }
+    .ct.dim { color: var(--text-dim); }
+
+    /* ─── Annotations ─── */
+    .ann {
+      display: flex;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      margin: 7px 0;
+      line-height: 1.5;
+    }
+    .ann.bad  { background: var(--red-dim);    border-left: 2px solid var(--red);    color: #fca5a5; }
+    .ann.good { background: var(--green-glow); border-left: 2px solid var(--green);  color: #86efac; }
+    .ann.note { background: var(--amber-dim);  border-left: 2px solid var(--amber);  color: #fcd34d; }
+
+    .ann-icon { flex-shrink: 0; font-style: normal; }
+
+    /* ─── Iteration cards ─── */
+    .iter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .iter-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .iter-card.final {
+      border-color: var(--green);
+      box-shadow: 0 0 28px var(--green-glow);
+    }
+
+    .iter-badge {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .iter-card.final .iter-badge { color: var(--green); }
+
+    .iter-score {
+      font-family: var(--font-serif);
+      font-size: 46px;
+      font-weight: 400;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 10px;
+    }
+
+    .is-1 { color: var(--amber); }
+    .is-2 { color: #f97316; }
+    .is-3 { color: var(--green); }
+
+    .iter-desc {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+      margin-bottom: 14px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; }
+
+    .tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+    .tag.rm { background: var(--red-dim);      color: #fca5a5; }
+    .tag.ad { background: var(--green-glow);   color: #86efac; }
+
+    /* ─── Journey bar ─── */
+    .journey-box {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 26px;
+    }
+
+    .j-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 18px;
+    }
+
+    .j-track {
+      height: 5px;
+      background: var(--surface-2);
+      border-radius: 3px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+
+    .j-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 3px;
+      background: linear-gradient(90deg, var(--amber) 0%, #f97316 40%, var(--green) 100%);
+      transition: width 1.6s cubic-bezier(.16,1,.3,1);
+    }
+
+    .j-stops {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+    }
+
+    .j-stop { text-align: center; }
+    .j-stop-val { color: var(--text-bright); font-weight: 700; }
+    .j-stop-val.final-val { color: var(--green); }
+    .j-stop-lbl { color: var(--text-dim); font-size: 10px; margin-top: 2px; }
+
+    /* ─── Split comparison ─── */
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .split-lbl {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .split-lbl.bad  { color: var(--red); }
+    .split-lbl.good { color: var(--green); }
+
+    /* ─── Principles ─── */
+    .prin-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .prin-card {
+      background: var(--surface);
+      border: 1px solid var(--border-hi);
+      border-radius: var(--radius);
+      padding: 22px;
+    }
+
+    .prin-num {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      margin-bottom: 10px;
+    }
+
+    .prin-title {
+      font-family: var(--font-serif);
+      font-size: 17px;
+      color: var(--text-bright);
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .prin-desc {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      text-align: center;
+    }
+
+    .footer-txt {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+    }
+
+    .footer-name { color: var(--green); }
+
+    /* ─── Animations ─── */
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.6s cubic-bezier(.16,1,.3,1), transform 0.6s cubic-bezier(.16,1,.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 640px) {
+      .metrics    { grid-template-columns: repeat(2, 1fr); }
+      .iter-grid  { grid-template-columns: 1fr; }
+      .split      { grid-template-columns: 1fr; }
+      .prin-grid  { grid-template-columns: 1fr; }
+      .hero-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── Lang Bar ─── -->
+<nav class="lang-bar" aria-label="Language selector">
+  <div class="wrap">
+    <span class="lang-bar-title" data-pt="estudo de caso" data-en="case study">estudo de caso</span>
+    <div class="lang-pills">
+      <button class="lang-btn active" id="btn-pt" onclick="setLang('pt')" aria-pressed="true">PT-BR</button>
+      <button class="lang-btn"        id="btn-en" onclick="setLang('en')" aria-pressed="false">EN</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ─── Hero ─── -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow" data-pt="Engenharia de Prompts — Estudo de Caso" data-en="Prompt Engineering — Case Study">
+      Engenharia de Prompts — Estudo de Caso
+    </p>
+    <h1 class="hero-title">
+      <span data-pt="Redução de <em>59%</em> no consumo de tokens via otimização iterativa de contexto"
+            data-en="<em>59%</em> token reduction through iterative context optimization">
+        Redução de <em>59%</em> no consumo de tokens via otimização iterativa de contexto
+      </span>
+    </h1>
+    <p class="hero-sub"
+       data-pt="Como apliquei diagnóstico sistemático e refinamento iterativo para transformar um arquivo de instruções de IA verboso em diretivas de alta densidade — eliminando ruído sem perder funcionalidade."
+       data-en="How I applied systematic diagnosis and iterative refinement to transform a verbose AI instruction file into high-density directives — eliminating noise without losing functionality.">
+      Como apliquei diagnóstico sistemático e refinamento iterativo para transformar um arquivo de instruções de IA verboso em diretivas de alta densidade — eliminando ruído sem perder funcionalidade.
+    </p>
+
+    <div class="metrics">
+      <div class="metric">
+        <div class="metric-val a"><span class="counter" data-to="42">0</span></div>
+        <div class="metric-lbl" data-pt="Score inicial" data-en="Initial Score">Score inicial</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val g"><span class="counter" data-to="96">0</span></div>
+        <div class="metric-lbl" data-pt="Score final" data-en="Final Score">Score final</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val g">−59%</div>
+        <div class="metric-lbl" data-pt="Tokens economizados" data-en="Tokens saved">Tokens economizados</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val i">3</div>
+        <div class="metric-lbl" data-pt="Iterações" data-en="Iterations">Iterações</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 1: The Problem ─── -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-n">01</span>
+      <h2 class="sec-title" data-pt="O Problema" data-en="The Problem">O Problema</h2>
+    </div>
+    <p class="body-text"
+       data-pt="O <code style='font-family:var(--font-mono);font-size:13px;color:var(--text-bright)'>CLAUDE.md</code> é carregado em <strong style='color:var(--text-bright)'>cada turno de conversa</strong> com o modelo. Todo token desnecessário é um custo que se multiplica por centenas de interações. O arquivo original misturava narrativa pessoal, documentação de usuário e justificativas — nenhuma dessas categorias instrui comportamento."
+       data-en="The <code style='font-family:var(--font-mono);font-size:13px;color:var(--text-bright)'>CLAUDE.md</code> is loaded on <strong style='color:var(--text-bright)'>every conversation turn</strong> with the model. Every unnecessary token is a cost that multiplies across hundreds of interactions. The original file mixed personal narrative, user documentation, and justifications — none of which instruct behavior.">
+      O <code style="font-family:var(--font-mono);font-size:13px;color:var(--text-bright)">CLAUDE.md</code> é carregado em <strong style="color:var(--text-bright)">cada turno de conversa</strong> com o modelo. Todo token desnecessário é um custo que se multiplica por centenas de interações. O arquivo original misturava narrativa pessoal, documentação de usuário e justificativas — nenhuma dessas categorias instrui comportamento.
+    </p>
+
+    <div class="codeblock" style="margin-bottom:20px">
+      <div class="cb-head">
+        <div class="cb-dot"></div><div class="cb-dot"></div><div class="cb-dot"></div>
+        <span data-pt="CLAUDE.md — versão original · ~220 tokens" data-en="CLAUDE.md — original version · ~220 tokens">CLAUDE.md — versão original · ~220 tokens</span>
+      </div>
+      <div class="cb-body">
+        <div class="cl"><span class="ln">1</span><span class="ct k"># HQ — Quartel General</span></div>
+        <div class="cl"><span class="ln">2</span><span class="ct bad" data-pt="Este é o espaço central de gestão de vida do Figueiredo..." data-en="This is Felipe Figueiredo's central life management space...">Este é o espaço central de gestão de vida do Figueiredo...</span></div>
+        <div class="cl"><span class="ln">3</span><span class="ct dim">&nbsp;</span></div>
+        <div class="cl"><span class="ln">4</span><span class="ct k">## Contexto</span></div>
+        <div class="cl"><span class="ln">5</span><span class="ct bad">- Email: socials@brightcurios.com</span></div>
+        <div class="cl"><span class="ln">6</span><span class="ct bad" data-pt="- Ambiente principal: Claude Code via terminal..." data-en="- Main environment: Claude Code via terminal...">- Ambiente principal: Claude Code via terminal...</span></div>
+        <div class="cl"><span class="ln">7</span><span class="ct bad" data-pt="- Por que aqui e não no browser: acesso a MCPs..." data-en="- Why here and not the browser: access to MCPs...">- Por que aqui e não no browser: acesso a MCPs...</span></div>
+        <div class="cl"><span class="ln">8</span><span class="ct dim">&nbsp;</span></div>
+        <div class="cl"><span class="ln">9</span><span class="ct k">## Preferências de Trabalho</span></div>
+        <div class="cl"><span class="ln">10</span><span class="ct">- Respostas curtas e diretas — sem enrolação</span></div>
+        <div class="cl"><span class="ln">11</span><span class="ct">- Português por padrão</span></div>
+        <div class="cl"><span class="ln">12</span><span class="ct dim">&nbsp;</span></div>
+        <div class="cl"><span class="ln">13</span><span class="ct bad">## Como Usar Este Espaço</span></div>
+        <div class="cl"><span class="ln">14</span><span class="ct bad" data-pt="Cada área pode ter sua própria subpasta conforme a necessidade..." data-en="Each area can have its own subfolder as needs grow...">Cada área pode ter sua própria subpasta conforme a necessidade...</span></div>
+      </div>
+    </div>
+
+    <div class="ann bad">
+      <span class="ann-icon">✕</span>
+      <span data-pt="<strong>Narrativa descritiva</strong> — o modelo não precisa saber a história do projeto. Contexto de perfil já vive nas memórias persistentes." data-en="<strong>Descriptive narrative</strong> — the model doesn't need to know the project's history. Profile context already lives in persistent memory."><strong>Narrativa descritiva</strong> — o modelo não precisa saber a história do projeto. Contexto de perfil já vive nas memórias persistentes.</span>
+    </div>
+    <div class="ann bad">
+      <span class="ann-icon">✕</span>
+      <span data-pt="<strong>Justificativas</strong> — explicar <em>por que</em> uma preferência existe não instrui o comportamento do modelo." data-en="<strong>Justifications</strong> — explaining <em>why</em> a preference exists doesn't instruct model behavior."><strong>Justificativas</strong> — explicar <em>por que</em> uma preferência existe não instrui o comportamento do modelo.</span>
+    </div>
+    <div class="ann bad">
+      <span class="ann-icon">✕</span>
+      <span data-pt="<strong>Documentação de usuário</strong> — &ldquo;Como Usar Este Espaço&rdquo; é um README. Não é uma diretiva." data-en="<strong>User documentation</strong> — &ldquo;How to Use This Space&rdquo; is a README. It is not a directive."><strong>Documentação de usuário</strong> — "Como Usar Este Espaço" é um README. Não é uma diretiva.</span>
+    </div>
+    <div class="ann bad">
+      <span class="ann-icon">✕</span>
+      <span data-pt="<strong>Duplicatas com memória</strong> — email e contexto de perfil já existem no sistema de memórias, tornando essas linhas puro overhead." data-en="<strong>Memory duplicates</strong> — email and profile context already exist in the memory system, making these lines pure overhead."><strong>Duplicatas com memória</strong> — email e contexto de perfil já existem no sistema de memórias, tornando essas linhas puro overhead.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 2: Iterations ─── -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-n">02</span>
+      <h2 class="sec-title" data-pt="As Iterações" data-en="The Iterations">As Iterações</h2>
+    </div>
+
+    <div class="iter-grid">
+      <div class="iter-card">
+        <div class="iter-badge" data-pt="ITERAÇÃO 01" data-en="ITERATION 01">ITERAÇÃO 01</div>
+        <div class="iter-score is-1">65</div>
+        <p class="iter-desc" data-pt="Remoção de toda narrativa, justificativas e duplicatas. Preferências convertidas em diretivas diretas e compactas." data-en="Removal of all narrative, justifications, and duplicates. Preferences converted into direct, compact directives.">Remoção de toda narrativa, justificativas e duplicatas. Preferências convertidas em diretivas diretas e compactas.</p>
+        <div class="tags">
+          <span class="tag rm" data-pt="− narrativa" data-en="− narrative">− narrativa</span>
+          <span class="tag rm" data-pt="− justificativas" data-en="− justifications">− justificativas</span>
+          <span class="tag rm" data-pt="− docs de usuário" data-en="− user docs">− docs de usuário</span>
+          <span class="tag rm" data-pt="− email duplicado" data-en="− duplicate email">− email duplicado</span>
+        </div>
+      </div>
+
+      <div class="iter-card">
+        <div class="iter-badge" data-pt="ITERAÇÃO 02" data-en="ITERATION 02">ITERAÇÃO 02</div>
+        <div class="iter-score is-2">84</div>
+        <p class="iter-desc" data-pt="Adição de diretivas de workflow mapeando a sequência de skills e ferramentas disponíveis. Instrução explícita sobre memórias persistentes." data-en="Added workflow directives mapping the sequence of available skills and tools. Explicit instruction about the persistent memory system.">Adição de diretivas de workflow mapeando a sequência de skills e ferramentas disponíveis. Instrução explícita sobre memórias persistentes.</p>
+        <div class="tags">
+          <span class="tag ad" data-pt="+ workflows" data-en="+ workflows">+ workflows</span>
+          <span class="tag ad" data-pt="+ GitHub MCP" data-en="+ GitHub MCP">+ GitHub MCP</span>
+          <span class="tag ad" data-pt="+ mapa de skills" data-en="+ skills map">+ mapa de skills</span>
+        </div>
+      </div>
+
+      <div class="iter-card final">
+        <div class="iter-badge" data-pt="ITERAÇÃO 03 — FINAL" data-en="ITERATION 03 — FINAL">ITERAÇÃO 03 — FINAL</div>
+        <div class="iter-score is-3">96</div>
+        <p class="iter-desc" data-pt="Sequência de skills clarificada, zero redundâncias com memória, formato ultra-compacto com máxima densidade de instrução." data-en="Skill sequence clarified, zero memory redundancies, ultra-compact format with maximum instruction density.">Sequência de skills clarificada, zero redundâncias com memória, formato ultra-compacto com máxima densidade de instrução.</p>
+        <div class="tags">
+          <span class="tag ad" data-pt="+ sequência explícita" data-en="+ explicit sequence">+ sequência explícita</span>
+          <span class="tag ad" data-pt="+ zero redundâncias" data-en="+ zero redundancies">+ zero redundâncias</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Journey bar -->
+    <div class="journey-box">
+      <div class="j-label" data-pt="PROGRESSÃO DE SCORE" data-en="SCORE PROGRESSION">PROGRESSÃO DE SCORE</div>
+      <div class="j-track">
+        <div class="j-fill" id="jfill"></div>
+      </div>
+      <div class="j-stops">
+        <div class="j-stop">
+          <div class="j-stop-val">42</div>
+          <div class="j-stop-lbl" data-pt="inicial" data-en="initial">inicial</div>
+        </div>
+        <div class="j-stop">
+          <div class="j-stop-val">65</div>
+          <div class="j-stop-lbl">v1</div>
+        </div>
+        <div class="j-stop">
+          <div class="j-stop-val">84</div>
+          <div class="j-stop-lbl">v2</div>
+        </div>
+        <div class="j-stop">
+          <div class="j-stop-val final-val">96</div>
+          <div class="j-stop-lbl" data-pt="final" data-en="final">final</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 3: Result ─── -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-n">03</span>
+      <h2 class="sec-title" data-pt="Resultado Final" data-en="Final Result">Resultado Final</h2>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="split-lbl bad" data-pt="ANTES — ~220 tokens" data-en="BEFORE — ~220 tokens">ANTES — ~220 tokens</div>
+        <div class="codeblock" style="opacity:0.7">
+          <div class="cb-body" style="font-size:12px">
+            <div class="cl"><span class="ct k"># HQ — Quartel General</span></div>
+            <div class="cl"><span class="ct bad" data-pt="Este é o espaço central de gestão..." data-en="This is the central management space...">Este é o espaço central de gestão...</span></div>
+            <div class="cl"><span class="ct k" style="margin-top:6px;display:block">## Contexto</span></div>
+            <div class="cl"><span class="ct bad">- Email: socials@...</span></div>
+            <div class="cl"><span class="ct bad" data-pt="- Ambiente principal: Claude Code..." data-en="- Main environment: Claude Code...">- Ambiente principal: Claude Code...</span></div>
+            <div class="cl"><span class="ct bad" data-pt="- Por que aqui e não no browser:..." data-en="- Why here and not the browser:...">- Por que aqui e não no browser:...</span></div>
+            <div class="cl"><span class="ct k" style="margin-top:6px;display:block">## Preferências de Trabalho</span></div>
+            <div class="cl"><span class="ct">- Respostas curtas e diretas</span></div>
+            <div class="cl"><span class="ct">- Português por padrão</span></div>
+            <div class="cl"><span class="ct bad" style="margin-top:6px;display:block">## Como Usar Este Espaço</span></div>
+            <div class="cl"><span class="ct bad" data-pt="Cada área pode ter sua própria subpasta..." data-en="Each area can have its own subfolder...">Cada área pode ter sua própria subpasta...</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="split-lbl good" data-pt="DEPOIS — ~90 tokens" data-en="AFTER — ~90 tokens">DEPOIS — ~90 tokens</div>
+        <div class="codeblock" style="border-color:var(--green);box-shadow:0 0 24px var(--green-glow)">
+          <div class="cb-body" style="font-size:12px">
+            <div class="cl"><span class="ct ok"># HQ</span></div>
+            <div class="cl" style="height:10px"></div>
+            <div class="cl"><span class="ct"><span class="ct key">- Idioma:</span> <span data-pt="Português sempre" data-en="Portuguese always">Português sempre</span></span></div>
+            <div class="cl"><span class="ct"><span class="ct key">- Tom:</span> <span data-pt="Direto. Sem summaries, sem emojis." data-en="Direct. No summaries, no emojis.">Direto. Sem summaries, sem emojis.</span></span></div>
+            <div class="cl"><span class="ct"><span class="ct key">- Áreas:</span> <span data-pt="Finanças · Projetos · Dev · Lifestyle · Ops" data-en="Finance · Projects · Dev · Lifestyle · Ops">Finanças · Projetos · Dev · Lifestyle · Ops</span></span></div>
+            <div class="cl" style="height:10px"></div>
+            <div class="cl"><span class="ct ok">## Workflows</span></div>
+            <div class="cl"><span class="ct" data-pt="- Novo projeto → brainstorming obrigatório" data-en="- New project → brainstorming required">- Novo projeto → brainstorming obrigatório</span></div>
+            <div class="cl"><span class="ct" data-pt="- Aprovado → writing-plans" data-en="- Approved → writing-plans">- Aprovado → writing-plans</span></div>
+            <div class="cl"><span class="ct" data-pt="- Implementação → executing-plans" data-en="- Implementation → executing-plans">- Implementação → executing-plans</span></div>
+            <div class="cl"><span class="ct" data-pt="- Revisão → requesting-code-review" data-en="- Review → requesting-code-review">- Revisão → requesting-code-review</span></div>
+            <div class="cl" style="height:10px"></div>
+            <div class="cl"><span class="ct ok">## <span data-pt="Contexto técnico" data-en="Technical context">Contexto técnico</span></span></div>
+            <div class="cl"><span class="ct" data-pt="- GitHub MCP: FigueiredoFelipe (read-only)" data-en="- GitHub MCP: FigueiredoFelipe (read-only)">- GitHub MCP: FigueiredoFelipe (read-only)</span></div>
+            <div class="cl"><span class="ct" data-pt="- Perfil e stack → nas memórias." data-en="- Profile and stack → in persistent memory.">- Perfil e stack → nas memórias.</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Section 4: Principles ─── -->
+<section class="section reveal">
+  <div class="wrap">
+    <div class="sec-hd">
+      <span class="sec-n">04</span>
+      <h2 class="sec-title" data-pt="Princípios Extraídos" data-en="Key Principles">Princípios Extraídos</h2>
+    </div>
+
+    <div class="prin-grid">
+      <div class="prin-card">
+        <div class="prin-num">P-01</div>
+        <div class="prin-title" data-pt="CLAUDE.md ≠ README" data-en="CLAUDE.md ≠ README">CLAUDE.md ≠ README</div>
+        <p class="prin-desc" data-pt="O arquivo é lido pelo modelo em cada turno, não pelo humano. Cada frase deve instruir comportamento — não descrever contexto." data-en="The file is read by the model every turn, not the human. Every sentence must instruct behavior — not describe context.">O arquivo é lido pelo modelo em cada turno, não pelo humano. Cada frase deve instruir comportamento — não descrever contexto.</p>
+      </div>
+      <div class="prin-card">
+        <div class="prin-num">P-02</div>
+        <div class="prin-title" data-pt="Memória armazena, CLAUDE.md ativa" data-en="Memory stores, CLAUDE.md activates">Memória armazena, CLAUDE.md ativa</div>
+        <p class="prin-desc" data-pt="Contexto estático (perfil, histórico, stack) vai para memórias persistentes. CLAUDE.md contém apenas diretivas de comportamento ativo." data-en="Static context (profile, history, stack) goes into persistent memory. CLAUDE.md contains only active behavior directives.">Contexto estático (perfil, histórico, stack) vai para memórias persistentes. CLAUDE.md contém apenas diretivas de comportamento ativo.</p>
+      </div>
+      <div class="prin-card">
+        <div class="prin-num">P-03</div>
+        <div class="prin-title" data-pt="Workflows explícitos superam implícitos" data-en="Explicit workflows beat implicit ones">Workflows explícitos superam implícitos</div>
+        <p class="prin-desc" data-pt="Mapear a sequência de skills e ferramentas garante consistência sem depender de instrução verbal repetida a cada sessão." data-en="Mapping the skill and tool sequence guarantees consistency without relying on repeated verbal instruction every session.">Mapear a sequência de skills e ferramentas garante consistência sem depender de instrução verbal repetida a cada sessão.</p>
+      </div>
+      <div class="prin-card">
+        <div class="prin-num">P-04</div>
+        <div class="prin-title" data-pt="Tokens acumulam — sempre mensure" data-en="Tokens accumulate — always measure">Tokens acumulam — sempre mensure</div>
+        <p class="prin-desc" data-pt="220 tokens × 500 conversas = 110.000 tokens desperdiçados. Otimização de contexto é uma disciplina de engenharia, não um detalhe estético." data-en="220 tokens × 500 conversations = 110,000 wasted tokens. Context optimization is an engineering discipline, not just an aesthetic choice.">220 tokens × 500 conversas = 110.000 tokens desperdiçados. Otimização de contexto é uma disciplina de engenharia, não um detalhe estético.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── Footer ─── -->
+<footer class="footer">
+  <div class="wrap">
+    <p class="footer-txt">
+      <span class="footer-name">Felipe Figueiredo</span>
+      <span data-pt=" · Senior Fullstack Engineer · Belo Horizonte, Brasil" data-en=" · Senior Fullstack Engineer · Belo Horizonte, Brazil"> · Senior Fullstack Engineer · Belo Horizonte, Brasil</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  // ─── Language toggle ───
+  function setLang(lang) {
+    document.getElementById('btn-pt').classList.toggle('active', lang === 'pt');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-pt').setAttribute('aria-pressed', lang === 'pt');
+    document.getElementById('btn-en').setAttribute('aria-pressed', lang === 'en');
+    document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+
+    document.querySelectorAll('[data-pt]').forEach(el => {
+      const key = lang === 'pt' ? 'data-pt' : 'data-en';
+      const val = el.getAttribute(key);
+      if (val !== null) el.innerHTML = val;
+    });
+  }
+
+  // ─── Counter animation ───
+  function animateCounter(el) {
+    const to = parseInt(el.dataset.to, 10);
+    const dur = 1400;
+    const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * ease);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ─── Intersection observer ───
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const t = e.target;
+
+      if (t.classList.contains('reveal'))    { t.classList.add('visible'); }
+      if (t.classList.contains('counter'))   { animateCounter(t); io.unobserve(t); }
+      if (t.id === 'jfill')                  { setTimeout(() => { t.style.width = '96%'; }, 200); io.unobserve(t); }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal, .counter, #jfill').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
