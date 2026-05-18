@@ -6,6 +6,7 @@ import ThemeToggle from '../UI/ThemeToggle'
 
 const links = [
   { label: 'Work', href: '/projects' },
+  { label: 'Writing', href: '/writing' },
   { label: 'About', href: '/#about' },
   { label: 'Contact', href: '/#contact' },
 ]
