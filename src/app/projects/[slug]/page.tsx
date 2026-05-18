@@ -116,7 +116,7 @@ export default async function ProjectPage({ params }: Props) {
 
       {project.body && (
         <AnimatedSection delay={0.15}>
-          <div className="prose prose-sm max-w-none text-[var(--text-secondary)] [&_h2]:text-[var(--text-primary)] [&_h2]:font-display [&_h2]:font-semibold [&_a]:text-[var(--text-primary)] [&_a]:underline [&_strong]:text-[var(--text-primary)]">
+          <div className="prose prose-sm max-w-none text-[var(--text-secondary)] [&_h2]:text-[var(--text-primary)] [&_h2]:font-display [&_h2]:font-semibold [&_h2]:tracking-tight [&_h3]:text-[var(--text-primary)] [&_h3]:font-display [&_h3]:font-semibold [&_h3]:tracking-tight [&_a]:text-[var(--text-primary)] [&_a]:underline [&_strong]:text-[var(--text-primary)]">
             <PortableText value={project.body as Parameters<typeof PortableText>[0]['value']} />
           </div>
         </AnimatedSection>
