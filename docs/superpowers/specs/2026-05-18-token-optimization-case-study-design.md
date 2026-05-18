@@ -1,74 +1,79 @@
 # Token Optimization Case Study — Integration Design
 
-**Date:** 2026-05-18  
-**Status:** Implemented  
-**Route:** `/writing/token-optimization`
+**Date:** 2026-05-18
+**Status:** Implemented & committed (branch: `feature/portfolio-v2`)
+**Route:** `https://felipefigueiredodev.vercel.app/writing/token-optimization`
 
 ## Context
 
-A static HTML case study (830 lines, self-contained dark theme) documenting a CLAUDE.md token optimization audit. The goal: drive LinkedIn readers directly to the portfolio to read the case study, then convert them into portfolio visitors via CTAs.
+An 830-line self-contained HTML case study documenting a CLAUDE.md token optimization
+audit (score 42 → 96, −59% tokens). Goal: drive LinkedIn readers to the portfolio to
+read the case study, then convert them via bottom CTAs.
+
+`/writing` permanently redirects to `/writing/token-optimization`, leaving the index
+route extensible for future writing entries without touching the LinkedIn link.
 
 ## User Journey
 
 ```
-LinkedIn Post → /writing/token-optimization (SSR) → read case study → Get in Touch / View Portfolio
+LinkedIn Post → /writing/token-optimization → case study (EN default) → Get in Touch / View Portfolio
 ```
-
-`/writing` redirects to `/writing/token-optimization` (one-liner, ready for future expansion).
 
 ## Architecture
 
-| Piece | Decision |
-|---|---|
-| Route | `/app/writing/token-optimization/page.tsx` — Server Component |
-| Isolation | `/app/writing/token-optimization/layout.tsx` — `position: fixed; inset: 0; z-index: 1000` wrapper |
-| HTML source | `/public/case-studies/token-optimization.html` — read at request time via `fs.readFileSync` |
-| CSS scoping | `:root` → `#cs-root`, `body` → `#cs-root`, `body::before/after` → `#cs-root::before/after` |
-| OG image | `/public/og/token-optimization.png` (LinkedIn cover, 1200×627) |
-| Default lang | EN — button states pre-set in HTML, `setLang('en')` appended to script |
-| `/writing` index | `redirect('/writing/token-optimization')` — one-liner, extensible |
-| Sitemap | `/writing/token-optimization` added |
-
-## Isolation Strategy
-
-The portfolio root layout renders `<Navbar />` and `<Footer />` on every page. The case study layout creates a `position: fixed; inset: 0; z-index: 1000` wrapper (`#cs-root`) that covers the portfolio chrome completely, acting as a full-viewport overlay with its own scroll container.
-
-The case study CSS is scoped to `#cs-root` to avoid polluting the portfolio's `:root` CSS variables (the two designs define conflicting values for `--bg`, `--text`, etc.).
+| Piece | Decision | Rationale |
+|---|---|---|
+| Route type | Server Component (SSR) | OG metadata must be server-rendered for LinkedIn link preview |
+| HTML delivery | `fs.readFileSync` + `dangerouslySetInnerHTML` | Preserves original design; iframe rejected — CTAs couldn't span iframe boundary |
+| CSS isolation | `:root`/`body`/`body::before`/`body::after` → `#cs-root` equivalents | Portfolio and case study define conflicting CSS variables (`--bg`, `--text`, etc.) |
+| Viewport isolation | `layout.tsx`: `position:fixed; inset:0; z-index:1000` | Root layout's `<Navbar>` and `<Footer>` are always rendered; fixed overlay covers them |
+| OG image | `/public/og/token-optimization.png` (1200×627) | Same cover used on the LinkedIn post — visual consistency |
+| Default language | EN — button states pre-set in parse step, `setLang('en')` appended to script | No PT→EN flash on load |
+| PT/EN toggle | Preserved and functional | Original case study feature; bilingual accessibility maintained |
+| Cache behavior | No `revalidate` set — Next.js default (static at build for prod) | HTML source is stable; update requires redeploy if content changes |
 
 ## CTAs
 
-**Top nav** (sticky, z-index 201, always visible):
+**Top** (sticky, `z-index: 201`, always visible while scrolling):
 ```
-← felipefigueiredo.dev
+← felipefigueiredo.dev          [links to /]
 ```
 
-**Bottom footer** (replaces original case study footer):
+**Bottom** (replaces original case study footer):
 ```
 Enjoyed this? Let's build something together.
-[← View Portfolio]  [Get in Touch →]  ← goes to /#contact
+[← View Portfolio]   [Get in Touch →]    ← /#contact anchor
 ```
 
-## SSR Metadata
+## SSR Metadata (LinkedIn OG)
 
-```ts
+```
 title:       "CLAUDE.md Token Optimization — Case Study"
 description: "From score 42 to 96. A real audit that cut 59% of tokens with zero functionality lost."
 og:image:    /og/token-optimization.png
 og:url:      https://felipefigueiredodev.vercel.app/writing/token-optimization
+twitter:     summary_large_image
 ```
 
-## Files Created
+## Files Changed
 
-- `src/app/writing/page.tsx` — redirect
-- `src/app/writing/token-optimization/layout.tsx` — viewport isolation + portfolio nav
-- `src/app/writing/token-optimization/page.tsx` — SSR page with metadata + dangerouslySetInnerHTML
-- `public/case-studies/token-optimization.html` — HTML source
-- `public/og/token-optimization.png` — OG image (LinkedIn cover)
-- `src/app/sitemap.ts` — updated to include writing route
+| File | Change |
+|---|---|
+| `src/app/writing/page.tsx` | New — `redirect('/writing/token-optimization')` |
+| `src/app/writing/token-optimization/layout.tsx` | New — viewport isolation + sticky portfolio nav |
+| `src/app/writing/token-optimization/page.tsx` | New — SSR page, metadata, CSS scoping, CTAs |
+| `public/case-studies/token-optimization.html` | New — HTML source (do not edit directly; redeploy to update) |
+| `public/og/token-optimization.png` | New — OG/LinkedIn cover image |
+| `src/app/sitemap.ts` | Updated — `/writing/token-optimization` added |
 
-## Post-Deploy
+## Deploy & Post-Deploy Checklist
 
-Add LinkedIn post URL once live. No code changes needed — the `[LINK]` in the post points to:
 ```
-https://felipefigueiredodev.vercel.app/writing/token-optimization
+[ ] Open PR: feature/portfolio-v2 → master
+[ ] Merge and wait for Vercel deploy
+[ ] Visit /writing/token-optimization — verify EN is default, both CTAs work
+[ ] Test OG preview: paste URL into https://www.linkedin.com/post-inspector/
+    → confirm title, description, and cover image appear correctly
+[ ] Paste final URL into LinkedIn post draft where [LINK] placeholder is
+[ ] Publish LinkedIn post
 ```
