@@ -9,6 +9,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'seniority-2035',
+    title: 'Where Do the Senior Engineers of 2035 Come From?',
+    summary:
+      "AI absorbed the exact work that used to forge juniors — and the market hasn't priced the bill it's about to receive.",
+    date: 'July 2026',
+    tag: 'Essay · AI & Engineering Careers',
+  },
+  {
     slug: 'token-optimization',
     title: 'CLAUDE.md Token Optimization',
     summary:
