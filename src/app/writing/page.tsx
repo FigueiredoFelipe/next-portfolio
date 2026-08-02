@@ -9,6 +9,14 @@ export const metadata: Metadata = {
 
 const articles = [
   {
+    slug: 'derived-state',
+    title: 'Deriving State Is a Correctness Guarantee, Not a Performance Trick',
+    summary:
+      "The reason to derive state instead of storing it isn't performance — it's correctness. And in the age of AI-written code, spotting the difference is the job.",
+    date: 'August 2026',
+    tag: 'Essay · React & AI-Native Engineering',
+  },
+  {
     slug: 'seniority-2035',
     title: 'Where Do the Senior Engineers of 2035 Come From?',
     summary:
