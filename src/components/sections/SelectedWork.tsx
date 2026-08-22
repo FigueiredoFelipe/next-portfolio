@@ -25,15 +25,11 @@ export default function SelectedWork({ projects }: Props) {
       {projects.length === 0 ? (
         <p className="text-sm text-[var(--text-muted)]">No projects yet.</p>
       ) : (
-        <div className="grid md:grid-cols-2 gap-6">
+        {/* Column count that divides evenly, rather than one stretched card
+            taller than the viewport. See /projects for the same rule. */}
+        <div className={`grid ${projects.length % 3 === 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
           {projects.map((project, i) => (
-            <AnimatedSection
-              key={project._id}
-              delay={i * 0.08}
-              // Odd count: widen the lead card so the row closes and the
-              // strongest project gets the largest frame. See /projects.
-              className={projects.length % 2 === 1 && i === 0 ? 'md:col-span-2' : undefined}
-            >
+            <AnimatedSection key={project._id} delay={i * 0.08}>
               <ProjectCard project={project} />
             </AnimatedSection>
           ))}

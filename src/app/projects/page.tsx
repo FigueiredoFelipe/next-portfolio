@@ -12,22 +12,21 @@ export const metadata: Metadata = {
 }
 
 /**
- * An odd count leaves a hole in a two-column grid. Widening the *first* card
- * fills it and puts the lead project at the largest size on the page — the
- * ordering already says which one that is. Widening the last one would give the
- * hero treatment to the weakest entry.
+ * Pick the column count that divides evenly instead of stretching a card to
+ * plug the gap. A full-width card sounded like emphasis and read as an
+ * obstacle: taller than the viewport, so its own title fell below the fold,
+ * and wide enough that the cover had to be upscaled.
  */
-function Grid({ projects, offset = 0 }: { projects: Project[]; offset?: number }) {
-  const leadIsWide = projects.length % 2 === 1
+function columnsFor(count: number): string {
+  if (count % 3 === 0) return 'md:grid-cols-3'
+  return 'md:grid-cols-2'
+}
 
+function Grid({ projects, offset = 0 }: { projects: Project[]; offset?: number }) {
   return (
-    <div className="grid md:grid-cols-2 gap-6">
+    <div className={`grid ${columnsFor(projects.length)} gap-6`}>
       {projects.map((project, i) => (
-        <AnimatedSection
-          key={project._id}
-          delay={(offset + i) * 0.07}
-          className={leadIsWide && i === 0 ? 'md:col-span-2' : undefined}
-        >
+        <AnimatedSection key={project._id} delay={(offset + i) * 0.07}>
           <ProjectCard project={project} />
         </AnimatedSection>
       ))}

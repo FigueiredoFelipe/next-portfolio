@@ -16,8 +16,16 @@ function TechTag({ label }: { label: string }) {
 }
 
 export default function ProjectCard({ project }: Props) {
+  // Covers are dense UI screenshots, and cards render up to ~500px wide on a
+  // 2x display. Asking for 800 meant the browser was upscaling every one of
+  // them; 1200 costs nothing on a CDN and stops the blur.
   const imgSrc = project.coverImage
-    ? urlFor(project.coverImage as SanityImage).width(800).height(450).url()
+    ? urlFor(project.coverImage as SanityImage)
+        .width(1200)
+        .height(675)
+        .quality(90)
+        .auto('format')
+        .url()
     : null
 
   const visibleTechs = project.techs?.slice(0, 3) ?? []
