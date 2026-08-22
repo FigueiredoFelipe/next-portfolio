@@ -2,7 +2,7 @@ import AnimatedSection from '../UI/AnimatedSection'
 import {
   SiTypescript, SiReact, SiNextdotjs, SiNodedotjs,
   SiNestjs, SiPostgresql, SiSupabase, SiTailwindcss, SiDocker,
-  SiAngular, SiFlutter,
+  SiAngular, SiFlutter, SiPython, SiFastapi, SiSentry,
 } from 'react-icons/si'
 import { TbBrandReactNative } from 'react-icons/tb'
 
@@ -29,10 +29,20 @@ const primary: Tech[] = [
   { icon: SiDocker,      label: 'Docker',      color: '#2496ED' },
 ]
 
+/**
+ * Every entry here has to survive "tell me about it" in a call, because the
+ * heading is a claim, not a wish list. Python and FastAPI earn their place from
+ * BlackLetter's backend; Sentry from actually reading session replays to
+ * reproduce production errors. A generic AWS icon would not survive that test —
+ * the honest version names the services.
+ */
 const alsoShipped: Tech[] = [
   { icon: SiAngular,          label: 'Angular',      color: '#DD0031' },
   { icon: TbBrandReactNative, label: 'React Native', color: '#61DAFB' },
   { icon: SiFlutter,          label: 'Flutter',      color: '#54C5F8' },
+  { icon: SiPython,           label: 'Python',       color: '#3776AB' },
+  { icon: SiFastapi,          label: 'FastAPI',      color: '#009688' },
+  { icon: SiSentry,           label: 'Sentry',       color: '#8B5CF6' },
 ]
 
 function TechGrid({ items }: { items: Tech[] }) {
