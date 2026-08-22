@@ -11,11 +11,23 @@ export const metadata: Metadata = {
   description: 'All projects built by Felipe Figueiredo — Fullstack Developer.',
 }
 
+/**
+ * An odd count leaves a hole in a two-column grid. Widening the *first* card
+ * fills it and puts the lead project at the largest size on the page — the
+ * ordering already says which one that is. Widening the last one would give the
+ * hero treatment to the weakest entry.
+ */
 function Grid({ projects, offset = 0 }: { projects: Project[]; offset?: number }) {
+  const leadIsWide = projects.length % 2 === 1
+
   return (
     <div className="grid md:grid-cols-2 gap-6">
       {projects.map((project, i) => (
-        <AnimatedSection key={project._id} delay={(offset + i) * 0.07}>
+        <AnimatedSection
+          key={project._id}
+          delay={(offset + i) * 0.07}
+          className={leadIsWide && i === 0 ? 'md:col-span-2' : undefined}
+        >
           <ProjectCard project={project} />
         </AnimatedSection>
       ))}

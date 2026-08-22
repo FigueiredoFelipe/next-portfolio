@@ -27,7 +27,13 @@ export default function SelectedWork({ projects }: Props) {
       ) : (
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, i) => (
-            <AnimatedSection key={project._id} delay={i * 0.08}>
+            <AnimatedSection
+              key={project._id}
+              delay={i * 0.08}
+              // Odd count: widen the lead card so the row closes and the
+              // strongest project gets the largest frame. See /projects.
+              className={projects.length % 2 === 1 && i === 0 ? 'md:col-span-2' : undefined}
+            >
               <ProjectCard project={project} />
             </AnimatedSection>
           ))}
