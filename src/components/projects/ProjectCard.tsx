@@ -32,9 +32,13 @@ export default function ProjectCard({ project }: Props) {
   const extraCount = (project.techs?.length ?? 0) - 3
 
   return (
+    // h-full, because the grid stretches the *wrapper* to the row height and
+    // the card was only as tall as its own content. Whether the tech tags wrap
+    // to a second line depends on how long the words happen to be, so cards in
+    // the same row ended up different heights for no reason a reader can see.
     <Link
       href={`/projects/${project.slug.current}`}
-      className="group block bg-[var(--bg-surface)] border border-[var(--border)] rounded-sm overflow-hidden hover:border-[var(--text-muted)] transition-colors"
+      className="group flex h-full flex-col bg-[var(--bg-surface)] border border-[var(--border)] rounded-sm overflow-hidden hover:border-[var(--text-muted)] transition-colors"
     >
       <div className="relative aspect-video bg-[var(--border)] overflow-hidden">
         {imgSrc ? (
@@ -51,7 +55,7 @@ export default function ProjectCard({ project }: Props) {
           </div>
         )}
       </div>
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         <h3 className="font-display font-semibold text-[var(--text-primary)] mb-2 text-sm leading-snug">
           {project.title}
         </h3>
@@ -60,7 +64,9 @@ export default function ProjectCard({ project }: Props) {
             {project.summary}
           </p>
         )}
-        <div className="flex flex-wrap gap-1.5">
+        {/* mt-auto pins the tags to the bottom, so the row of chips lines up
+            across cards even when one summary is shorter than another. */}
+        <div className="mt-auto flex flex-wrap gap-1.5">
           {visibleTechs.map((tech) => (
             <TechTag key={tech} label={tech} />
           ))}
