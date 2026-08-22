@@ -83,13 +83,16 @@ export default function Hero({ openToWork }: Props) {
             <Item {...(itemProps as object)}>
               <p className="mb-4">
                 I&rsquo;m a{' '}
-                <span className="text-[var(--text-primary)] font-semibold">Senior Product Engineer</span>{' '}
-                building AI-native apps with Next.js, Supabase and LLMs. Six years shipping production
-                web and mobile — currently focused on{' '}
-                <span className="text-[var(--text-primary)] font-semibold">GPT-4 features</span>{' '}
-                on iOS and Android, and going deep on{' '}
+                <span className="text-[var(--text-primary)] font-semibold">Senior Full-Stack Engineer</span>{' '}
+                building AI-native products end-to-end — React, Next.js, TypeScript, Node, Supabase
+                and LLMs. Six years shipping to production. Lately I&rsquo;ve been building systems
+                that draw the line between what a model should decide and what deterministic code
+                should decide instead — most recently{' '}
+                <span className="text-[var(--text-primary)] font-semibold">BlackLetter</span>, a
+                contract reviewer that splits the two and tells you which half produced each
+                finding. Alongside that, going deep on{' '}
                 <span className="text-[var(--text-primary)] font-semibold">Anthropic&rsquo;s Claude Code</span>{' '}
-                for AI-native dev workflows.
+                for agentic dev workflows.
               </p>
             </Item>
             <Item {...(itemProps as object)}>
