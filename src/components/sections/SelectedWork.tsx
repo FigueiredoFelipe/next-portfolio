@@ -25,8 +25,8 @@ export default function SelectedWork({ projects }: Props) {
       {projects.length === 0 ? (
         <p className="text-sm text-[var(--text-muted)]">No projects yet.</p>
       ) : (
-        {/* Column count that divides evenly, rather than one stretched card
-            taller than the viewport. See /projects for the same rule. */}
+        // Column count that divides evenly, rather than one stretched card
+        // taller than the viewport. See /projects for the same rule.
         <div className={`grid ${projects.length % 3 === 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
           {projects.map((project, i) => (
             <AnimatedSection key={project._id} delay={i * 0.08}>
