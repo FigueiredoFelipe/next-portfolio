@@ -9,6 +9,11 @@ import AnimatedSection from '@/components/UI/AnimatedSection'
 
 export const revalidate = 60
 
+/** True for links that open a recording instead of the running project. */
+function isVideo(url: string): boolean {
+  return /youtube\.com|youtu\.be|vimeo\.com|loom\.com/.test(url)
+}
+
 interface Props {
   params: Promise<{ slug: string }>
 }
@@ -83,7 +88,10 @@ export default async function ProjectPage({ params }: Props) {
               rel="noopener noreferrer"
               className="text-sm font-semibold text-[var(--text-primary)] border-b border-[var(--text-primary)] pb-0.5 hover:text-[var(--text-secondary)] hover:border-[var(--text-secondary)] transition-colors"
             >
-              Live Demo →
+              {/* Some entries link a walkthrough rather than a running app.
+                  Promising a demo and delivering a video is a small betrayal,
+                  and small betrayals are the ones a reader remembers. */}
+              {isVideo(project.liveUrl) ? 'Demo video →' : 'Live Demo →'}
             </a>
           )}
           {project.githubUrl && (
