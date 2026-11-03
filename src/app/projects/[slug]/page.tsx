@@ -2,12 +2,42 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
-import { PortableText } from '@portabletext/react'
+import { PortableText, type PortableTextComponents } from '@portabletext/react'
 import { getProjectBySlug, getAllProjectSlugs, urlFor } from '@/lib/sanity'
 import { SanityImage } from '@/lib/types'
 import AnimatedSection from '@/components/UI/AnimatedSection'
 
 export const revalidate = 60
+
+type BodyImage = SanityImage & { alt?: string; caption?: string; asset?: { _ref?: string } }
+
+/** Images placed inside the case-study body. Without this, PortableText drops them silently. */
+const bodyComponents: PortableTextComponents = {
+  types: {
+    image: ({ value }: { value: BodyImage }) => {
+      const ref = value?.asset?._ref
+      if (!ref) return null
+      // Asset ids end in "-<width>x<height>-<format>": the real aspect ratio, so the layout never jumps.
+      const [w, h] = (ref.split('-')[2] ?? '16x9').split('x').map(Number)
+      const width = 1600
+      return (
+        <figure className="my-8 not-prose">
+          <Image
+            src={urlFor(value).width(width).url()}
+            alt={value.alt ?? ''}
+            width={width}
+            height={Math.round((width * (h || 9)) / (w || 16))}
+            className="w-full h-auto rounded-sm border border-[var(--border)]"
+            sizes="(max-width: 768px) 100vw, 768px"
+          />
+          {value.caption && (
+            <figcaption className="mt-2 text-xs text-[var(--text-muted)]">{value.caption}</figcaption>
+          )}
+        </figure>
+      )
+    },
+  },
+}
 
 /** True for links that open a recording instead of the running project. */
 function isVideo(url: string): boolean {
@@ -125,7 +155,10 @@ export default async function ProjectPage({ params }: Props) {
       {project.body && (
         <AnimatedSection delay={0.15}>
           <div className="prose prose-sm max-w-none text-[var(--text-secondary)] [&_h2]:text-[var(--text-primary)] [&_h2]:font-display [&_h2]:font-semibold [&_h2]:tracking-tight [&_h3]:text-[var(--text-primary)] [&_h3]:font-display [&_h3]:font-semibold [&_h3]:tracking-tight [&_a]:text-[var(--text-primary)] [&_a]:underline [&_strong]:text-[var(--text-primary)]">
-            <PortableText value={project.body as Parameters<typeof PortableText>[0]['value']} />
+            <PortableText
+              value={project.body as Parameters<typeof PortableText>[0]['value']}
+              components={bodyComponents}
+            />
           </div>
         </AnimatedSection>
       )}
