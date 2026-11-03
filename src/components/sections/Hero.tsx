@@ -84,22 +84,28 @@ export default function Hero({ openToWork }: Props) {
               <p className="mb-4">
                 I&rsquo;m a{' '}
                 <span className="text-[var(--text-primary)] font-semibold">Senior Full-Stack Engineer</span>{' '}
-                building AI-native products end-to-end — React, Next.js, TypeScript, Node, Supabase
-                and LLMs. Six years shipping to production. Lately I&rsquo;ve been building systems
-                that draw the line between what a model should decide and what deterministic code
-                should decide instead — most recently{' '}
-                <span className="text-[var(--text-primary)] font-semibold">BlackLetter</span>, a
-                contract reviewer that splits the two and tells you which half produced each
-                finding. Alongside that, going deep on{' '}
-                <span className="text-[var(--text-primary)] font-semibold">Anthropic&rsquo;s Claude Code</span>{' '}
-                for agentic dev workflows.
+                building AI-native products end to end with React, Next.js, TypeScript, Node,
+                PostgreSQL and LLMs. I&rsquo;ve been shipping to production since 2019, most recently
+                an AI-powered mobile app on the App Store and Google Play for a US company, where I
+                also set up Sentry session replay and the team rolled it out to every other product.
               </p>
             </Item>
             <Item {...(itemProps as object)}>
               <p className="mb-4">
-                Unusual route in: a decade of law before I switched to engineering full-time,
-                CS50 from Harvard on the side. The legal training shows up in how I think about
-                architecture — precision, edge cases, what happens when things go wrong.
+                Lately I&rsquo;ve been building systems that draw the line between what a model
+                should decide and what deterministic code should decide instead.{' '}
+                <span className="text-[var(--text-primary)] font-semibold">BlackLetter</span> is the
+                clearest example: a contract reviewer that splits the two and tells you which half
+                produced each finding. I work agent-first, with{' '}
+                <span className="text-[var(--text-primary)] font-semibold">Claude Code</span> at the
+                center of my workflow.
+              </p>
+            </Item>
+            <Item {...(itemProps as object)}>
+              <p className="mb-4">
+                Unusual route in: licensed attorney since 2015, engineering since 2019, plus
+                Harvard&rsquo;s CS50. The legal training shows up in how I design systems: precision,
+                edge cases, and what happens when things go wrong.
               </p>
             </Item>
             <Item {...(itemProps as object)}>
