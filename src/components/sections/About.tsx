@@ -84,8 +84,7 @@ export default function About() {
             a job.
           </p>
           <p className="text-[var(--text-secondary)] leading-relaxed text-base mb-4">
-            The hard part, for the last two years, has been deciding what an LLM should be allowed
-            to decide. Anything that can be written as a rule should be a rule: deterministic,
+            Lately, the hard part has been deciding what an LLM should be allowed to decide. Anything that can be written as a rule should be a rule: deterministic,
             testable, identical every run. The model gets only the questions that genuinely need
             judgment — and it gets them narrowly. It doesn&apos;t hunt on its own; it rules on
             candidates the deterministic layer already found, and it has to show its reasoning. A
@@ -94,7 +93,7 @@ export default function About() {
             Strategic Council.
           </p>
           <p className="text-[var(--text-secondary)] leading-relaxed text-base mb-4">
-            I work remotely with teams in the US, and I&apos;m comfortable owning a feature end to
+            I&apos;ve worked remotely with US teams, and I&apos;m comfortable owning a feature end to
             end — API, database, interface, and the failure paths nobody demos.
           </p>
           <p className="text-[var(--text-muted)] leading-relaxed text-sm">
